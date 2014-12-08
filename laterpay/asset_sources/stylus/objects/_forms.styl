@@ -3,7 +3,7 @@ input[type=text].lp_input,
 input[type=number].lp_input,
 textarea.lp_input,
 select.lp_input
-    background-color                $background-lightest
+    background-color                $background--lightest
     border-radius                   4px
     border                          2px solid $border
     box-shadow                      none
@@ -15,7 +15,7 @@ select.lp_input
     &:focus
         -moz-appearance             none
         -webkit-appearance          none
-        border-color                $clickable-highlight
+        border-color                $clickable--highlight
 
     &:disabled
         cursor                      not-allowed
@@ -55,7 +55,7 @@ input[type=text].lp_numberInput
 .lp_input::-webkit-input-placeholder,
 .lp_input::-moz-placeholder,
 .lp_input:-ms-input-placeholder
-    color                           $text-lighter
+    color                           $text--lighter
     line-height                     1
 
 
@@ -70,7 +70,7 @@ input[type=text][required] + label[placeholder]
     &:before
         linear-gradient             hsla(0,0%,100%,0), 46%, hsla(0,0%,100%,1), 47%
         background-repeat           no-repeat
-        color                       $text-lighter
+        color                       $text--lighter
         content                     attr(placeholder)
         display                     inline-block
         margin                      1.4em 0 0 0.5em
@@ -86,7 +86,7 @@ input[type=text][required]
         transition-duration         0.2s
 
     &:focus + label[placeholder]:before
-        color                       $clickable-highlight
+        color                       $clickable--highlight
 
     &:invalid + label[placeholder][alt]:before
         content                     attr(alt)
@@ -103,7 +103,7 @@ input[type=text][required]
     margin-right                    0.1em
     position                        relative
     width                           1.5em
-    z-index                         $zindex-elevated_1
+    z-index                         $zindex--elevated-1
     zoom                            1
 
     input[type=radio],
@@ -119,10 +119,10 @@ input[type=text][required]
         position                    absolute
 
         .frame
-            fill                    $border-darker
+            fill                    $border--darker
 
         .frameBack
-            fill                    $background-lightest
+            fill                    $background--lightest
 
         .check
             display                 none
@@ -133,7 +133,7 @@ input[type=text][required]
 .ez-mark :hover,
 label:hover .ez-mark
     svg .frame
-        fill                        $clickable-highlight
+        fill                        $clickable--highlight
 
 .ez-checked.ez-checkbox svg .check,
 .ez-checked.ez-radio svg .dot
@@ -152,7 +152,7 @@ label:hover .ez-mark
 
 // revenue model labels ------------------------------------------------------------------------------------------------
 .lp_revenueModelLabel
-    background-color                $background-darker
+    background-color                $background--darker
     border-radius                   3px
     color                           $clickable
     display                         inline-block
@@ -166,18 +166,18 @@ label:hover .ez-mark
         display                     none
 
 label.lp_revenueModelLabel:hover
-    background-color                $clickable-highlight
-    color                           $text-inverse
+    background-color                $clickable--highlight
+    color                           $text--inverse
 
 .lp_revenueModelLabel.lp_is-disabled
     visibility                      hidden
 
 .lp_revenueModelLabel.lp_is-selected
-    background-color                $background-laterpay
-    color                           $text-inverse
+    background-color                $laterpay-brand
+    color                           $text--inverse
 
     &:hover
-        background-color            $background-laterpay
+        background-color            $laterpay-brand
         cursor                      default
 
 

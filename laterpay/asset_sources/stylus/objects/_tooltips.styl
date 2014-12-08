@@ -13,7 +13,7 @@
         transition-delay                0
         transition                      0.25s ease
         visibility                      hidden
-        z-index                         $zindex-overlayed_1
+        z-index                         $zindex--overlayed-1
 
     // downward-pointing arrow
     &:before
@@ -23,13 +23,13 @@
         content                         ''
         margin-bottom                   -12px
         position                        absolute
-        z-index                         $zindex-overlayed_2
+        z-index                         $zindex--overlayed-2
 
     // text content of the tooltip
     &:after
         background                      $text
         border-radius                   3px
-        color                           $text-inverse
+        color                           $text--inverse
         content                         attr(data-tooltip)
         font-size                       $fs-08
         font-weight                     normal

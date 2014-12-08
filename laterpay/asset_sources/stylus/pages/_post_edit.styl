@@ -52,7 +52,7 @@
 
 .lp_currency
     bottom                          0.75em
-    color                           $text-lightest
+    color                           $text--lightest
     font-size                       1.5em
 
 .lp_postRevenueModel
@@ -89,10 +89,10 @@
                                     inset -1px 1px 0 hsla(0, 0%, 100%, 0.55)
 
             &:hover
-                background-color    $clickable-highlight
+                background-color    $clickable--highlight
 
                 a
-                    color           $text-inverse
+                    color           $text--inverse
 
             a
                 display             block
@@ -100,14 +100,14 @@
 
         .lp_is-selected,
         .lp_is-selected:hover
-            background-color        $background-laterpay
+            background-color        $laterpay-brand
 
         li.lp_is-selected
             box-shadow              inset 0 1px 3px hsla(0, 0%, 0%, 0.34)
 
             a,
             &:hover a
-                color               $text-inverse
+                color               $text--inverse
                 cursor              default
                 text-shadow         none
 
@@ -133,7 +133,7 @@
             padding                 0
 
         li
-            border-top              1px solid $border-lightest
+            border-top              1px solid $border--lightest
 
             &:nth-child(even)
                 background-color    hsl(0, 0%, 97%)
@@ -142,7 +142,7 @@
                 border-radius       0 0 1px 1px
 
             &:hover
-                background-color    $background-highlight
+                background-color    $background--highlight
 
             a
                 display             block
@@ -154,7 +154,7 @@
 
         .lp_is-selectedCategory,
         .lp_is-selectedCategory:nth-child(even)
-            background-color        $background-highlight
+            background-color        $background--highlight
 
             a
                 color               hsl(0, 0%, 27%)

@@ -12,9 +12,9 @@
 
 // tabs ----------------------------------------------------------------------------------------------------------------
 .lp_navigation
-    background-color        $background-lightest
-    border-bottom           1px solid $border-darker
-    box-shadow              0 1px 0 $background-lightest
+    background-color        $background--lightest
+    border-bottom           1px solid $border--darker
+    box-shadow              0 1px 0 $background--lightest
     left                    -20px
     padding-top             2rem
     width                   101.6%
@@ -32,7 +32,7 @@ ul.lp_navigation_tabs
             margin-left     0
 
         a
-            color           $text-lighter
+            color           $text--lighter
             font-size       $fs-1
             padding         0.5em 1em 0.75em
 
@@ -76,7 +76,7 @@ ul.lp_navigation_tabs
         &:before,
         h2,
         i
-            color           $clickable-highlight
+            color           $clickable--highlight
 
     h2
         font-size           2rem
@@ -96,16 +96,16 @@ ul.lp_navigation_tabs
     position                fixed // always show flash message at top of screen, even if page is scrolled down
     top                     2.5rem
     width                   96%
-    z-index                 $zindex-overlayed_1
+    z-index                 $zindex--overlayed-1
 
 
 // contextual help -----------------------------------------------------------------------------------------------------
 #screen-meta // WordPress selector
     position                absolute
-    z-index                 $zindex-elevated_1
+    z-index                 $zindex--elevated-1
 
 #contextual-help-link-wrap // WordPress selector
-    z-index                 $zindex-elevated_2
+    z-index                 $zindex--elevated-2
 
 
 // Responsiveness ------------------------------------------------------------------------------------------------------

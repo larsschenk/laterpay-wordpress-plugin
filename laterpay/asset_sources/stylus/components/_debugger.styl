@@ -8,7 +8,7 @@
 }
 
 .lp_debugger {
-    background-color:               $background-darker;
+    background-color:               $background--darker;
     bottom:                         0;
     box-shadow:                     -1px 1px 6px hsla(0, 0%, 0%, 0.34);
     font-size:                      14px;
@@ -18,7 +18,7 @@
     position:                       fixed;
     transition:                     0.25s ease-in-out;
     width:                          100%;
-    z-index:                        $zindex-topmost_1;
+    z-index:                        $zindex--topmost-1;
 
     header {
         background-color:           darken(hsl(0, 0%, 89%), 13%);
@@ -80,7 +80,7 @@
         }
 
         &:hover {
-            color:                  $clickable-highlight;
+            color:                  $clickable--highlight;
         }
     }
 }
@@ -96,10 +96,10 @@
 
 // debugger pane tabs --------------------------------------------------------------------------------------------------
 .lp_debugger_tabs {
-    border-bottom:                  1px solid $border-darker;
+    border-bottom:                  1px solid $border--darker;
     margin:                         $fs-075 $fs-075 0;
     position:                       relative;
-    z-index:                        $zindex-base;
+    z-index:                        $zindex--base;
 
     li {
         border:                     1px solid transparent;
@@ -111,12 +111,12 @@
         padding:                    0;
 
         &:hover {
-            border-color:           $border-darker $border-darker hsl(0, 0%, 90%);
+            border-color:           $border--darker $border--darker hsl(0, 0%, 90%);
         }
     }
 
     .lp_is-selected {
-        border-color:               $border-darker $border-darker hsl(0, 0%, 90%);
+        border-color:               $border--darker $border--darker hsl(0, 0%, 90%);
 
         a,
         &:hover a {
@@ -136,17 +136,17 @@
         padding:                    $fs-05 $fs-1;
 
         &:hover {
-            color:                  $clickable-highlight;
+            color:                  $clickable--highlight;
 
             span {
-                background-color:   $clickable-highlight;
+                background-color:   $clickable--highlight;
             }
         }
 
         span {
             background-color:       $clickable;
             border-radius:          2px;
-            color:                  $text-inverse;
+            color:                  $text--inverse;
             display:                inline-block;
             margin-left:            $fs-05;
             min-width:              $fs-075;
@@ -203,7 +203,7 @@
     }
 
     th {
-        color:                      $text-lighter;
+        color:                      $text--lighter;
         font-weight:                normal;
         max-width:                  12em;
         overflow:                   hidden;
@@ -222,11 +222,11 @@
 
         &:hover td,
         &:hover th {
-            background-color:       $background-highlight;
+            background-color:       $background--highlight;
         }
 
         td:last-child {
-            color:                  $text-lighter;
+            color:                  $text--lighter;
             max-width:              10em;
             text-align:             right;
         }
@@ -258,7 +258,7 @@
     .lp_debugger_logLevel-100:before
     .lp_debugger_logLevel-200:before
     .lp_debugger_logLevel-250:before {
-        color:                      $text-lighter;
+        color:                      $text--lighter;
         content:                    'm';
     }
 
@@ -284,7 +284,7 @@
 
     &:hover a,
     a:hover{
-        color:                      $clickable-highlight;
+        color:                      $clickable--highlight;
 
     }
 

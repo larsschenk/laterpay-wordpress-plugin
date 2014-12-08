@@ -65,7 +65,7 @@
  * 2. Restrict description to three lines
  */
 .lp_timePass_description
-    color                   $text-lighter
+    color                   $text--lighter
     font-size               $fs-1 /* 1 */
     height                  3.9em /* 2 */
     line-height             1.3 /* 1 */
@@ -106,7 +106,7 @@
         vertical-align      top                                                                     !important
 
     th
-        color               $text-lighter                                                           !important
+        color               $text--lighter                                                           !important
         font-weight         normal                                                                  !important
         padding-right       $fs-1                                                                   !important
         text-align          left                                                                    !important
@@ -117,7 +117,7 @@
 .lp_timePass_frontsideLink
     background              $clickable
     border-radius           16px
-    color                   $text-inverse
+    color                   $text--inverse
     padding                 $fs-05 $fs-1
     position                absolute
     top                     $fs-1
@@ -126,15 +126,15 @@
             transition      all 0.25s
 
     &:hover
-        background          $clickable-highlight
-        color               $text-inverse
+        background          $clickable--highlight
+        color               $text--inverse
         left                -($fs-1)
 
 
 // voucher codes -------------------------------------------------------------------------------------------------------
 /* the six-character voucher code */
 .lp_voucherCodeLabel {
-    background:             $background-lightest;
+    background:             $background--lightest;
     border:                 2px solid orange;
     color:                  orange;
     display:                inline-block;
@@ -192,7 +192,7 @@
     height                  round(3.75 * $fs-1) /* 6 - TODO: this is a magic number that should not be required */ !important
 
 .lp_voucherCodeFeedbackMessage
-    background              $background-highlight                                                   !important
+    background              $background--highlight                                                   !important
     border-radius           3px                                                                     !important
     color                   $text                                                                   !important
     cursor                  pointer                                                                 !important
@@ -220,16 +220,16 @@
     position                absolute /* 2 */                                                        !important
     top                     0                                                                       !important
     width                   100%                                                                    !important
-    z-index                 $zindex-overlayed_2 /* 2 */                                             !important
+    z-index                 $zindex--overlayed-2 /* 2 */                                             !important
 
     &:hover ~ .lp_timePassWidget_voucherCodeHint
-        color               $clickable-highlight                                                    !important
+        color               $clickable--highlight                                                    !important
 
     &:focus
         -moz-appearance     none                                                                    !important
         -webkit-appearance  none                                                                    !important
-        background          $background-lightest                                                    !important
-        border              2px solid $clickable-highlight /* 3 */                                  !important
+        background          $background--lightest                                                    !important
+        border              2px solid $clickable--highlight /* 3 */                                  !important
         border-radius       5px                                                                     !important
         box-shadow          none /* 1 */                                                            !important
         color               $text /* 3 */                                                           !important
@@ -243,13 +243,13 @@
             display         block /* 3 */                                                           !important
             font-size       $fs-15                                                                  !important
             position        absolute                                                                !important
-            z-index         $zindex-overlayed_2                                                     !important
+            z-index         $zindex--overlayed-2                                                     !important
 
         ~ .lp_timePassWidget_redeemVoucherCode
             background      $clickable                                                              !important
             border-radius   4px                                                                     !important
             bottom          $fs-05                                                                  !important
-            color           $text-inverse                                                           !important
+            color           $text--inverse                                                           !important
             cursor          pointer                                                                 !important
             display         inline-block /* 3 */                                                    !important
             position        absolute                                                                !important
@@ -257,12 +257,12 @@
             right           $fs-05                                                                  !important
             text-decoration none                                                                    !important
             top             $fs-05                                                                  !important
-            z-index         $zindex-overlayed_3                                                     !important
+            z-index         $zindex--overlayed-3                                                     !important
 
             &:hover,
             &:focus,
             &:active
-                background  $clickable-highlight                                                    !important
+                background  $clickable--highlight                                                    !important
                 text-decoration none                                                                !important
 
 // define line-height to minimize influence of theme styles
@@ -282,7 +282,7 @@
     visibility              visible /* 1 */                                                         !important
 
 .lp_timePassWidget_voucherCodeInputHint
-    color                   $text-lighter                                                           !important
+    color                   $text--lighter                                                           !important
     display                 none                                                                    !important
     margin                  0                                                                       !important
     padding                 $fs-075 $fs-1                                                           !important

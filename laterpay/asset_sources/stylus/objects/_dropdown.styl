@@ -17,7 +17,7 @@
         display             block
 
 .lp_dropdown_list
-    background              $background-lightest
+    background              $background--lightest
     border                  2px solid $border
     border-radius           3px
     display                 none
@@ -27,18 +27,18 @@
     position                absolute
     top                     round(3 * $fs-1)
     width                   6em
-    z-index                 $zindex-overlayed_1
+    z-index                 $zindex--overlayed-1
 
     /* upward-pointing arrow */
     .lp_triangle
-        border              13px solid $background-lightest
-        border-color        transparent transparent $background-lightest transparent
+        border              13px solid $background--lightest
+        border-color        transparent transparent $background--lightest transparent
         height              0
         left                -13px
         position            absolute
         top                 -10px
         width               0
-        z-index             $zindex-elevated_2
+        z-index             $zindex--elevated-2
     /* border for upward-pointing arrow */
     .lp_outerTriangle
         border-bottom-color $border
@@ -46,7 +46,7 @@
         left                50%
         margin-left         -14px
         top                 -28px
-        z-index             $zindex-elevated_1
+        z-index             $zindex--elevated-1
 
 .lp_dropdown_listItem
     display                 block
@@ -58,8 +58,8 @@
  * Highlight the selected item and remove all styling that makes it look as if you could interact with it
  */
 .lp_dropdown_listItem.lp_is-selected
-    color                   $text-lighter
+    color                   $text--lighter
 
     &:hover
-        color               $text-lighter
+        color               $text--lighter
         cursor              default
