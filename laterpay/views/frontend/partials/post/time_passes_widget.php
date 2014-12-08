@@ -14,7 +14,7 @@
              <p class="lp_timePass_callToActionText"><?php echo $laterpay['time_pass_call_to_action_text']; ?></p>
          <?php endif; ?>
 
-        <div id="lp_js_voucherCodeWrapper" class="lp_timePassWidget_voucherCodeWrapper lp_u_clearfix">
+        <div id="lp_js_voucherCodeWrapper" class="lp_timePassWidget_voucherCodeWrapper lp_clearfix">
             <input type="text"
                     name="time_pass_voucher_code"
                     class="lp_js_voucherCodeInput lp_timePassWidget_voucherCode"

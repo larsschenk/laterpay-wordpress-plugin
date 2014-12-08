@@ -94,12 +94,12 @@ class LaterPay_Core_Logger_Handler_WordPress extends LaterPay_Core_Logger_Handle
         ?>
             <div class="lp_debugger lp_is-hidden">
                 <header>
-                    <a href="#" class="lp_js_closeDebugger lp_closeLink lp_u_right" data-icon="l"></a>
-                    <div class="lp_u_right"><?php echo sprintf( __( '%s Memory Usage', 'laterpay' ), number_format( memory_get_peak_usage() / pow( 1024, 2 ), 1 ) . ' MB' ); ?></div>
+                    <a href="#" class="lp_js_closeDebugger lp_closeLink lp_right" data-icon="l"></a>
+                    <div class="lp_right"><?php echo sprintf( __( '%s Memory Usage', 'laterpay' ), number_format( memory_get_peak_usage() / pow( 1024, 2 ), 1 ) . ' MB' ); ?></div>
                     <h2 data-icon="a"><?php _e( 'Debugger', 'laterpay' ); ?></h2>
                 </header>
 
-                <ul class="lp_debugger_tabs lp_u_clearfix">
+                <ul class="lp_debugger_tabs lp_clearfix">
                     <li class="lp_is-selected">
                         <a href="#"><?php echo sprintf( __( 'Messages<span>%s</span>', 'laterpay' ), count( $this->records ) ); ?></a>
                     </li>

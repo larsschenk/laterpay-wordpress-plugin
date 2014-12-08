@@ -1,16 +1,16 @@
-// font sizes ----------------------------------------------------------------------------------------------------------
-$fs-1                           = 14px
+// base units / font sizes ---------------------------------------------------------------------------------------------
+$unit                           = 14px // the one true base unit, from which all else inherits
 
-$fs-125                         = round(1.25  * $fs-1)
-$fs-15                          = round(1.5   * $fs-1)
-$fs-175                         = round(1.75  * $fs-1)
-$fs-2                           = round(2     * $fs-1)
-$fs-3                           = round(3     * $fs-1)
+$unit--125                      = round(1.25  * $unit)
+$unit--15                       = round(1.5   * $unit)
+$unit--175                      = round(1.75  * $unit)
+$unit--2                        = round(2     * $unit)
+$unit--3                        = round(3     * $unit)
 
-$fs-08                          = round(0.8   * $fs-1)
-$fs-075                         = round(0.75  * $fs-1)
-$fs-05                          = round(0.5   * $fs-1)
-$fs-025                         = round(0.25  * $fs-1)
+$unit--08                       = round(0.8   * $unit)
+$unit--075                      = round(0.75  * $unit)
+$unit--05                       = round(0.5   * $unit)
+$unit--025                      = round(0.25  * $unit)
 
 
 // colors --------------------------------------------------------------------------------------------------------------
@@ -56,21 +56,21 @@ $border--lightest               = hsl(0, 0%, 98%)
 
 
 // z-indexes -----------------------------------------------------------------------------------------------------------
-$zindex--recessed               = -1
+$z--recessed               = -1
 
-$zindex--base                   = 0
+$z--base                   = 0
 
 // elements on the base layer that need to stick out
-$zindex--elevated-1             = 10
-$zindex--elevated-2             = 11
-$zindex--elevated-3             = 12
+$z--elevated-1             = 10
+$z--elevated-2             = 11
+$z--elevated-3             = 12
 
 // elements that float over the base layer
-$zindex--overlayed-1            = 100
-$zindex--overlayed-2            = 110
-$zindex--overlayed-3            = 120
+$z--overlayed-1            = 100
+$z--overlayed-2            = 110
+$z--overlayed-3            = 120
 
 // elements that must never be covered
-$zindex--topmost-1              = 1000000
-$zindex--topmost-2              = 1000010
-$zindex--topmost-3              = 1000020
+$z--topmost-1              = 1000000
+$z--topmost-2              = 1000010
+$z--topmost-3              = 1000020

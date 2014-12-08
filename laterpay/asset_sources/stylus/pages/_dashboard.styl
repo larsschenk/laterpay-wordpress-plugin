@@ -4,17 +4,17 @@
 // heading -------------------------------------------------------------------------------------------------------------
 h1 {
     font-weight: 400;
-    margin: $fs-2 0 $fs-1;
+    margin: $unit--2 0 $unit;
     position: relative;
     text-align: center;
 
     .lp_prevNextLink {
         display: inline-block;
         height: 1.5em;
-        padding: 0 $fs-05;
+        padding: 0 $unit--05;
         position: relative;
         vertical-align: text-top;
-        width: $fs-125;
+        width: $unit--125;
 
         &:hover {
             .lp_triangle--right {
@@ -28,7 +28,7 @@ h1 {
     }
 
     .lp_triangle {
-        border: $fs-08 solid $clickable;
+        border: $unit--08 solid $clickable;
         top: 0.25em;
     }
 
@@ -55,32 +55,32 @@ h1 {
 
 
 // diagrams ------------------------------------------------------------------------------------------------------------
-.lp_u_w-1-3 {
+.lp_1/3 {
     float: left;
 
     h2 {
-        margin: $fs-1 0 0.4em;
+        margin: $unit 0 0.4em;
         text-align: center;
     }
 }
 
 .lp_dashboardGraph {
-    height: 15 * $fs-1;
-    margin: 0 $fs-1 0 0;
+    height: 15 * $unit;
+    margin: 0 $unit 0 0;
 }
 
 .lp_dashboardGraph + .lp_statisticsRow {
-    margin: $fs-075 $fs-1 $fs-125 0;
+    margin: $unit--075 $unit $unit--125 0;
 }
 
 /* statistics rows */
 .lp_statisticsRow {
     background: $background--darker;
     border-radius: 3px;
-    margin: $fs-1 $fs-1 $fs-1 0;
+    margin: $unit $unit $unit 0;
 
     ul {
-        margin: 0 $fs-1 0 0;
+        margin: 0 $unit 0 0;
         padding: 0;
     }
 
@@ -89,8 +89,8 @@ h1 {
         color: $text--lighter;
         float: left;
         list-style-type: none;
-        margin: $fs-025 0;
-        padding: $fs-05 $fs-05 0 $fs-075;
+        margin: $unit--025 0;
+        padding: $unit--05 $unit--05 0 $unit--075;
         text-align: right;
 
         &:last-child {
@@ -101,13 +101,13 @@ h1 {
     big {
         color: $text;
         display: block;
-        font-size: $fs-15;
+        font-size: $unit--15;
     }
 
     small,
     big small {
         color: $text--lighter;
-        font-size: $fs-1;
+        font-size: $unit;
     }
 
     big small {
@@ -124,7 +124,7 @@ h1 {
  */
 .lp_topBottomList {
     min-height: 17em; /* 1 */
-    margin: 0 $fs-1 $fs-1 0;
+    margin: 0 $unit $unit 0;
     padding: 0;
 
     li {
@@ -156,7 +156,7 @@ h1 {
 
     .peity {
         float: right;
-        margin: 0 $fs-1;
+        margin: 0 $unit;
     }
 
     .lp_value {
@@ -164,18 +164,18 @@ h1 {
         float: left;
         margin: 0 0.4em 0 0;
         text-align: right;
-        width: round(4.5 * $fs-1);
+        width: round(4.5 * $unit);
 
         small {
             color: $text--lightest;
-            font-size: $fs-08;
+            font-size: $unit--08;
             line-height: 1;
             padding: 0 0 0 2px;
         }
     }
 
     .lp_value-narrow {
-        width: 3 * $fs-1;
+        width: 3 * $unit;
     }
 }
 

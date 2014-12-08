@@ -1,8 +1,8 @@
 // 'Account' tab in plugin backend
 
 // API credentials -----------------------------------------------------------------------------------------------------
-.lp_u_w-1-2 {
-    ul.lp_u_clearfix {
+.lp_1/2 {
+    ul.lp_clearfix {
         margin: 1.25em 0 -0.8em;
 
         .lp_backgroundIconSpacer {
@@ -20,33 +20,33 @@
 }
 
 // Chrome browser hack
-.lp_u_w-1-2 fieldset form:first-of-type:not(*:root) {
+.lp_1/2 fieldset form:first-of-type:not(*:root) {
     display:inline;
 }
 
 // render icons from icon font in pseudo elements
-.lp_u_w-1-2.lp_sandboxCredentials[data-icon],
-.lp_u_w-1-2.lp_liveCredentials[data-icon] {
+.lp_1/2.lp_sandboxCredentials[data-icon],
+.lp_1/2.lp_liveCredentials[data-icon] {
     &:before {
         color: $border;
         position: absolute;
-        z-index: $zindex--recessed;
+        z-index: $z--recessed;
     }
 }
 
-.lp_u_w-1-2.lp_sandboxCredentials[data-icon]:before {
+.lp_1/2.lp_sandboxCredentials[data-icon]:before {
     font-size: 90px;
     left: 26px;
     top: 57px;
 }
 
-.lp_u_w-1-2.lp_liveCredentials[data-icon]:before {
+.lp_1/2.lp_liveCredentials[data-icon]:before {
     font-size: 75px;
     left: 15px;
     top: 72px;
 }
 
-.lp_u_w-1-2.lp_liveCredentials[data-icon].lp_is-live:before {
+.lp_1/2.lp_liveCredentials[data-icon].lp_is-live:before {
     color: $laterpay-brand;
 }
 
@@ -59,7 +59,7 @@
 
 // responsiveness ------------------------------------------------------------------------------------------------------
 @media (max-width:1050px) {
-    .lp_u_w-1-2 {
+    .lp_1/2 {
         .lp_sandboxCredentials[data-icon]:before {
             font-size: 75px;
             left: 24px;

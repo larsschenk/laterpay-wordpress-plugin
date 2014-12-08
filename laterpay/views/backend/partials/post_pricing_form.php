@@ -6,20 +6,20 @@
     lpVars.limits = <?php echo $laterpay['price_ranges']; ?>;
 </script>
 
-<div class="lp_postPrice lp_u_clearfix">
-    <p class="lp_u_right">
+<div class="lp_postPrice lp_clearfix">
+    <p class="lp_right">
         <input type="text"
                 name="post-price"
                 id="lp_js_postPrice_priceInput"
-                class="lp_input lp_numberInput lp_u_fs-3"
+                class="lp_input lp_numberInput lp_fs--3"
                 value="<?php echo LaterPay_Helper_View::format_number( $laterpay['price'] ); ?>"
                 placeholder="<?php _e( '0.00', 'laterpay' ); ?>"
                 <?php if ( $laterpay['post_price_type'] !== LaterPay_Helper_Pricing::TYPE_INDIVIDUAL_PRICE ) { echo 'disabled="disabled"'; } ?>>
-        <span class="lp_currency lp_u_relative"><?php echo $laterpay['currency']; ?></span>
+        <span class="lp_currency lp_relative"><?php echo $laterpay['currency']; ?></span>
     </p>
 
-    <div id="lp_js_postPrice_revenueModel" class="lp_postRevenueModel lp_u_relative">
-            <label class="lp_revenueModelLabel lp_u_m-t125 lp_u_m-b05 lp_tooltip
+    <div id="lp_js_postPrice_revenueModel" class="lp_postRevenueModel lp_relative">
+            <label class="lp_revenueModelLabel lp_m--t125 lp_m--b05 lp_tooltip
                     <?php if ( in_array( $laterpay['post_price_type'], array( LaterPay_Helper_Pricing::TYPE_INDIVIDUAL_PRICE, LaterPay_Helper_Pricing::TYPE_INDIVIDUAL_DYNAMIC_PRICE ) ) ) : ?>
                         <?php if ( $laterpay['post_revenue_model'] == 'ppu' ) { echo ' lp_is-selected'; } ?>
                         <?php if ( $laterpay['price'] > LaterPay_Helper_Pricing::ppusis_max ) { echo ' lp_is-disabled'; } ?>
@@ -51,7 +51,7 @@
 </div>
 
 <div id="lp_js_priceType" class="lp_priceType<?php if ( in_array( $laterpay['post_price_type'], array( LaterPay_Helper_Pricing::TYPE_INDIVIDUAL_DYNAMIC_PRICE, LaterPay_Helper_Pricing::TYPE_CATEGORY_DEFAULT_PRICE ) ) ) { echo ' lp_is-expanded'; } ?>">
-     <ul id="lp_js_priceType_buttonGroup" class="lp_buttonGroup lp_u_clearfix">
+     <ul id="lp_js_priceType_buttonGroup" class="lp_buttonGroup lp_clearfix">
         <li class="<?php if ( in_array( $laterpay['post_price_type'], array( LaterPay_Helper_Pricing::TYPE_INDIVIDUAL_PRICE, LaterPay_Helper_Pricing::TYPE_INDIVIDUAL_DYNAMIC_PRICE ))  ) { echo 'lp_is-selected'; } ?>">
             <a href="#"
                 id="lp_js_useIndividualPrice"
@@ -105,19 +105,19 @@
     <?php else: ?>
         <a href="#"
             id="lp_js_resetDynamicPricingStartDate"
-            class="lp_dynamicPricingReset lp_u_block"
+            class="lp_dynamicPricingReset lp_block"
             data-icon="p"><?php _e( 'Restart dynamic pricing', 'laterpay' ); ?>
         </a>
     <?php endif; ?>
     <a href="#"
         id="lp_js_toggleDynamicPricing"
-        class="lp_dynamicPricingToggle lp_is-withDynamicPricing lp_u_block"
+        class="lp_dynamicPricingToggle lp_is-withDynamicPricing lp_block"
         data-icon="e"><?php _e( 'Remove dynamic pricing', 'laterpay' ); ?>
     </a>
 <?php else: ?>
     <a  href="#"
         id="lp_js_toggleDynamicPricing"
-        class="lp_dynamicPricingToggle lp_u_block"
+        class="lp_dynamicPricingToggle lp_block"
         data-icon="c"
         <?php if ( substr( $laterpay['post_price_type'], 0, 16 ) !== LaterPay_Helper_Pricing::TYPE_INDIVIDUAL_PRICE ) { echo 'style="display:none;"'; } ?>><?php _e( 'Add dynamic pricing', 'laterpay' ); ?>
     </a>

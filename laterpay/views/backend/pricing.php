@@ -5,9 +5,9 @@
         <p></p>
     </div>
 
-    <div class="lp_navigation lp_u_relative">
+    <div class="lp_navigation lp_relative">
         <?php if ( ! $laterpay['plugin_is_in_live_mode'] ): ?>
-            <a href="<?php echo add_query_arg( array( 'page' => $laterpay['admin_menu']['account']['url'] ), admin_url( 'admin.php' ) ); ?>" class="lp_pluginModeIndicator lp_u_absolute" data-icon="h">
+            <a href="<?php echo add_query_arg( array( 'page' => $laterpay['admin_menu']['account']['url'] ), admin_url( 'admin.php' ) ); ?>" class="lp_pluginModeIndicator lp_absolute" data-icon="h">
                 <h2><?php _e( '<strong>Test</strong> mode', 'laterpay' ); ?></h2>
                 <span><?php _e( 'Earn money in <i>live mode</i>', 'laterpay' ); ?></span>
             </a>
@@ -16,28 +16,28 @@
     </div>
 
     <div class="lp_pagewrap">
-        <ul class="lp_row lp_u_clearfix">
-            <li class="lp_u_left lp_u_w-1-3">
-                <div class="lp_u_m-0 lp_u_m-r1">
+        <ul class="lp_row lp_clearfix">
+            <li class="lp_left lp_1/3">
+                <div class="lp_m--0 lp_m--r1">
                     <h2><?php _e( 'Global Default Price', 'laterpay' ); ?></h2>
-                    <hr class="lp_u_b-0 lp_u_m-0 lp_u_m-t05 lp_u_m-b025">
-                    <dfn class="lp_spacer lp_u_block">&nbsp;</dfn>
+                    <hr class="lp_b--0 lp_m--0 lp_m--t05 lp_m--b025">
+                    <dfn class="lp_spacer lp_block">&nbsp;</dfn>
 
                     <form id="lp_js_globalDefaultPrice_form" method="post" action="">
                         <input type="hidden" name="form"    value="global_price_form">
                         <input type="hidden" name="action"  value="laterpay_pricing">
                         <?php if ( function_exists( 'wp_nonce_field' ) ) { wp_nonce_field( 'laterpay_form' ); } ?>
 
-                        <a href="#" id="lp_js_cancelEditingGlobalDefaultPrice" class="lp_editLink lp_cancel-link lp_u_right" data-icon="e" style="display:none;"><?php _e( 'Cancel', 'laterpay' ); ?></a>
-                        <a href="#" id="lp_js_saveGlobalDefaultPrice" class="lp_editLink lp_saveLink lp_u_right" data-icon="f" style="display:none;"><?php _e( 'Save', 'laterpay' ); ?></a>
+                        <a href="#" id="lp_js_cancelEditingGlobalDefaultPrice" class="lp_editLink lp_cancel-link lp_right" data-icon="e" style="display:none;"><?php _e( 'Cancel', 'laterpay' ); ?></a>
+                        <a href="#" id="lp_js_saveGlobalDefaultPrice" class="lp_editLink lp_saveLink lp_right" data-icon="f" style="display:none;"><?php _e( 'Save', 'laterpay' ); ?></a>
                         <p>
-                            <span id="lp_js_globalDefaultPrice_revenueModelLabel" class="lp_js_revenueModel_labelDisplay lp_revenueModelLabel lp_u_m-r025"><?php echo $laterpay['global_default_price_revenue_model']; ?></span>
-                            <span id="lp_js_globalDefaultPrice_revenueModel" class="lp_js_revenueModel lp_revenueModel lp_u_relative lp_u_left" style="display:none;">
-                                <label class="lp_js_revenueModel_label lp_revenueModelLabel lp_js_globalDefaultPrice_revenueModelLabel lp_u_m-r05 lp_u_m-b025
+                            <span id="lp_js_globalDefaultPrice_revenueModelLabel" class="lp_js_revenueModel_labelDisplay lp_revenueModelLabel lp_m--r025"><?php echo $laterpay['global_default_price_revenue_model']; ?></span>
+                            <span id="lp_js_globalDefaultPrice_revenueModel" class="lp_js_revenueModel lp_revenueModel lp_relative lp_left" style="display:none;">
+                                <label class="lp_js_revenueModel_label lp_revenueModelLabel lp_js_globalDefaultPrice_revenueModelLabel lp_m--r05 lp_m--b025
                                         <?php if ( $laterpay['global_default_price_revenue_model'] == 'ppu' || ! $laterpay['global_default_price_revenue_model'] ) { echo 'lp_is-selected'; } ?>
                                         <?php if ( $laterpay['global_default_price'] > 5 ) { echo 'lp_is-disabled'; } ?>">
                                     <input type="radio" name="laterpay_global_price_revenue_model" class="lp_js_revenueModel_input" value="ppu"<?php if ( $laterpay['global_default_price_revenue_model'] == 'ppu' || ( ! $laterpay['global_default_price_revenue_model'] && $laterpay['global_default_price'] < 5 ) ) { echo ' checked'; } ?>>PPU
-                                </label><label class="lp_js_revenueModel_label lp_revenueModelLabel lp_js_globalDefaultPrice_revenueModelLabel lp_u_m-r05 lp_u_m-b025
+                                </label><label class="lp_js_revenueModel_label lp_revenueModelLabel lp_js_globalDefaultPrice_revenueModelLabel lp_m--r05 lp_m--b025
                                         <?php if ( $laterpay['global_default_price_revenue_model'] == 'sis' ) { echo 'lp_is-selected'; } ?>
                                         <?php if ( $laterpay['global_default_price'] < 1.49) { echo 'lp_is-disabled'; } ?>">
                                     <input type="radio" name="laterpay_global_price_revenue_model" class="lp_js_revenueModel_input" value="sis"<?php if ( $laterpay['global_default_price_revenue_model'] == 'sis' ) { echo ' checked'; } ?>>SIS
@@ -63,18 +63,18 @@
                 </div>
             </li>
 
-            <li class="lp_u_left lp_u_w-1-3">
-                <div class="lp_u_m-0 lp_u_m-r1">
+            <li class="lp_left lp_1/3">
+                <div class="lp_m--0 lp_m--r1">
                     <h2><?php _e( 'Category Default Prices', 'laterpay' ); ?></h2>
-                    <hr class="lp_u_b-0 lp_u_m-0 lp_u_m-t05 lp_u_m-b025">
-                    <dfn class="lp_spacer lp_u_block"><?php _e( 'Category default prices overwrite global default prices.', 'laterpay' ); ?></dfn>
+                    <hr class="lp_b--0 lp_m--0 lp_m--t05 lp_m--b025">
+                    <dfn class="lp_spacer lp_block"><?php _e( 'Category default prices overwrite global default prices.', 'laterpay' ); ?></dfn>
 
                     <div id="lp_js_categoryDefaultPrice_list">
-                        <p class="lp_u_m-1-0-0"><strong><?php _e( 'Every post in category', 'laterpay' ); ?> &hellip;</strong></p>
+                        <p class="lp_m--1-0-0"><strong><?php _e( 'Every post in category', 'laterpay' ); ?> &hellip;</strong></p>
                         <?php foreach ( $laterpay['categories_with_defined_price'] as $category ): ?>
                             <form method="post" class="lp_js_categoryDefaultPrice_form lp_category-price-form">
 
-                                <p class="lp_u_m-t025">
+                                <p class="lp_m--t025">
                                     <input type="hidden" name="form" value="price_category_form">
                                     <input type="hidden" name="action" value="laterpay_pricing">
                                     <input type="hidden" name="category_id" class="lp_js_categoryDefaultPrice_categoryId" value="<?php echo $category->category_id; ?>">
@@ -83,13 +83,13 @@
                                     <?php $category_price         = LaterPay_Helper_View::format_number( $category->category_price ); ?>
                                     <?php $category_revenue_model = $category->revenue_model; ?>
 
-                                    <div class="lp_js_revenueModel lp_revenueModel lp_u_relative lp_u_left" style="display:none;">
-                                        <label class="lp_js_revenueModel_label lp_revenueModelLabel lp_u_m-r05 lp_u_m-b025
+                                    <div class="lp_js_revenueModel lp_revenueModel lp_relative lp_left" style="display:none;">
+                                        <label class="lp_js_revenueModel_label lp_revenueModelLabel lp_m--r05 lp_m--b025
                                                     <?php if ( $category_revenue_model == 'ppu' || ( ! $category_revenue_model && $category_price <= 5 ) ) { echo 'lp_is-selected'; } ?>
                                                     <?php if ( $category_price > 5) { echo 'lp_is-disabled'; } ?>">
                                             <input type="radio" name="laterpay_category_price_revenue_model_<?php echo $category->category_id; ?>" class="lp_js_revenueModel_input" value="ppu"<?php if ( $category_revenue_model == 'ppu' || ( ! $category_revenue_model && $category_price <= 5 )) { echo ' checked'; } ?>>PPU
                                         </label>
-                                        <label class="lp_js_revenueModel_label lp_revenueModelLabel lp_u_m-r05 lp_u_m-b025
+                                        <label class="lp_js_revenueModel_label lp_revenueModelLabel lp_m--r05 lp_m--b025
                                                     <?php if ( $category_revenue_model == 'sis' || ( ! $category_revenue_model && $category_price > 5 ) ) { echo 'lp_is-selected'; } ?>
                                                     <?php if ( $category_price < 1.49) { echo 'lp_is-disabled'; } ?>">
                                             <input type="radio" name="laterpay_category_price_revenue_model_<?php echo $category->category_id; ?>" class="lp_js_revenueModel_input" value="sis"<?php if ( $category_revenue_model == 'sis' || ( ! $category_revenue_model && $category_price > 5 ) ) { echo ' checked'; } ?>>SIS
@@ -99,7 +99,7 @@
                                     <span class="lp_js_revenueModel_labelDisplay lp_revenueModelLabel"><?php echo $category_revenue_model; ?></span>
                                     <strong>
                                         <input type="hidden" name="category" value="<?php echo $category->category_name; ?>" class="lp_js_selectCategory">
-                                        <span class="lp_js_categoryDefaultPrice_categoryTitle lp_categoryTitle lp_u_inlineBlock"><?php echo $category->category_name; ?></span>
+                                        <span class="lp_js_categoryDefaultPrice_categoryTitle lp_categoryTitle lp_inlineBlock"><?php echo $category->category_name; ?></span>
                                     </strong>
                                     <?php _e( 'costs', 'laterpay' ); ?>
                                     <strong>
@@ -122,22 +122,22 @@
                         <?php endforeach; ?>
                     </div>
 
-                    <a href="#" id="lp_js_addCategoryDefaultPrice" class="lp_u_block lp_u_m-t1" data-icon="c"><?php _e( 'Set default price for another category', 'laterpay' ); ?></a>
+                    <a href="#" id="lp_js_addCategoryDefaultPrice" class="lp_block lp_m--t1" data-icon="c"><?php _e( 'Set default price for another category', 'laterpay' ); ?></a>
 
                     <form method="post" id="lp_js_categoryDefaultPrice_template" class="lp_js_categoryDefaultPrice_form lp_category-price-form lp_is-unsaved" style="display:none;">
                         <input type="hidden" name="form" value="price_category_form">
                         <input type="hidden" name="action" value="laterpay_pricing">
                         <input type="hidden" name="category_id" class="lp_js_categoryDefaultPrice_categoryId" value="">
 
-                        <p class="lp_u_m-t025">
+                        <p class="lp_m--t025">
                             <?php if ( function_exists( 'wp_nonce_field' ) ) { wp_nonce_field( 'laterpay_form' ); } ?>
 
-                            <div class="lp_js_revenueModel lp_revenueModel lp_u_relative lp_u_left">
-                                <label class="lp_js_revenueModel_label lp_revenueModelLabel lp_u_m-r05 lp_u_m-b025
+                            <div class="lp_js_revenueModel lp_revenueModel lp_relative lp_left">
+                                <label class="lp_js_revenueModel_label lp_revenueModelLabel lp_m--r05 lp_m--b025
                                         <?php if ( $laterpay['global_default_price_revenue_model'] == 'ppu' || ( ! $laterpay['global_default_price_revenue_model'] && $laterpay['global_default_price'] < 5 ) ) { echo 'lp_is-selected'; } ?>">
                                     <input type="radio" name="laterpay_category_price_revenue_model" class="lp_js_revenueModel_input" value="ppu"<?php if ( $laterpay['global_default_price_revenue_model'] == 'ppu' || ( ! $laterpay['global_default_price_revenue_model'] && $laterpay['global_default_price'] < 5 ) ) { echo ' checked'; } ?>>PPU
                                 </label>
-                                <label class="lp_js_revenueModel_label lp_revenueModelLabel lp_u_m-r05 lp_u_m-b025
+                                <label class="lp_js_revenueModel_label lp_revenueModelLabel lp_m--r05 lp_m--b025
                                         <?php if ( $laterpay['global_default_price_revenue_model'] == 'sis' ) { echo 'lp_is-selected'; } ?>
                                         <?php if ( $laterpay['global_default_price'] < 1.49) { echo 'lp_is-disabled'; } ?>">
                                     <input type="radio" name="laterpay_category_price_revenue_model" class="lp_js_revenueModel_input" value="sis"<?php if ( $laterpay['global_default_price_revenue_model'] == 'sis' ) { echo ' checked'; } ?>>SIS
@@ -147,7 +147,7 @@
                             <span class="lp_js_revenueModel_labelDisplay lp_revenueModelLabel"></span>
                             <strong>
                                 <input type="hidden" name="category" value="" class="lp_js_selectCategory">
-                                <span class="lp_js_categoryDefaultPrice_categoryTitle lp_categoryTitle lp_u_inlineBlock"></span>
+                                <span class="lp_js_categoryDefaultPrice_categoryTitle lp_categoryTitle lp_inlineBlock"></span>
                             </strong>
                             <?php _e( 'costs', 'laterpay' ); ?>
                             <strong>
@@ -170,11 +170,11 @@
                 </div>
             </li>
 
-            <li class="lp_u_left lp_u_w-1-3">
-                <div class="lp_u_m-0 lp_u_m-r1">
+            <li class="lp_left lp_1/3">
+                <div class="lp_m--0 lp_m--r1">
                     <h2><?php _e( 'Individual Prices', 'laterpay' ); ?></h2>
-                    <hr class="lp_u_b-0 lp_u_m-0 lp_u_m-t05 lp_u_m-b025">
-                    <dfn class="lp_spacer lp_u_block"><?php _e( 'Individual prices overwrite global and category default prices.', 'laterpay' ); ?></dfn>
+                    <hr class="lp_b--0 lp_m--0 lp_m--t05 lp_m--b025">
+                    <dfn class="lp_spacer lp_block"><?php _e( 'Individual prices overwrite global and category default prices.', 'laterpay' ); ?></dfn>
 
                     <div>
                         <p><?php _e( 'You can set individual prices for posts,<br>when adding or editing a post.', 'laterpay' ); ?></p>
@@ -183,28 +183,28 @@
             </li>
         </ul>
 
-        <div class="lp_row lp_u_m-t3">
+        <div class="lp_row lp_m--t3">
             <p>
-                <span class="lp_revenueModelLabel lp_u_m-r05">PPU</span><strong><dfn>Pay-per-Use</dfn></strong><br>
+                <span class="lp_revenueModelLabel lp_m--r05">PPU</span><strong><dfn>Pay-per-Use</dfn></strong><br>
                 <dfn>
                     <?php _e( sprintf( 'The user pays later once his LaterPay invoice reaches 5 %s.', $laterpay['standard_currency'] ), 'laterpay' ); //FIXME: translation with sprintf ?><br>
                     <?php _e( sprintf( 'You can choose PPU for prices from 0.05 - 5.00 %s.', $laterpay['standard_currency'] ), 'laterpay' ); //FIXME: translation with sprintf ?>
                 </dfn>
             </p>
             <p>
-                <span class="lp_revenueModelLabel lp_u_m-r05">SIS</span><strong><dfn>Single Sale</dfn></strong><br>
+                <span class="lp_revenueModelLabel lp_m--r05">SIS</span><strong><dfn>Single Sale</dfn></strong><br>
                 <dfn>
                     <?php _e( 'The user has to log in to LaterPay and pay immediately.', 'laterpay' ); ?><br>
                     <?php _e( sprintf( 'You can choose SIS for prices from 1.49 - 149.99 %s.', $laterpay['standard_currency'] ), 'laterpay' ); //FIXME: translation with sprintf?>
                 </dfn>
             </p>
         </div>
-        <hr class="lp_u_m-1-0 lp_u_m-b3">
+        <hr class="lp_m--1-0 lp_m--b3">
 
 
         <div class="lp_row">
             <h2><?php _e( 'Time Passes', 'laterpay' ); ?></h2>
-            <dfn class="lp_u_block lp_u_m-b1">
+            <dfn class="lp_block lp_m--b1">
                 <?php _e( 'Time passes provide access to your entire site or specific categories for a limited time.', 'laterpay' ); ?><br>
                 <?php _e( 'To display time passes you have to <a href="admin.php?page=laterpay-appearance-tab#lp_timePassAppearance">call the action \'laterpay_time_passes\'</a> in your theme.', 'laterpay' ); ?>
             </dfn>
@@ -213,17 +213,17 @@
                 <a href="#" id="lp_js_addTimePass" class="lp_addTimePass button button-primary" data-icon="c"><?php _e( 'New Pass', 'laterpay' ); ?></a>
 
                 <?php foreach ( $laterpay['passes_list'] as $pass ): ?>
-                    <div class="lp_js_timePassWrapper lp_timePassWrapper lp_u_clearfix" data-pass-id="<?php echo $pass->pass_id; ?>">
-                        <div class="lp_js_timePassPreview lp_u_left">
+                    <div class="lp_js_timePassWrapper lp_timePassWrapper lp_clearfix" data-pass-id="<?php echo $pass->pass_id; ?>">
+                        <div class="lp_js_timePassPreview lp_left">
                             <?php echo $this->render_pass( (array) $pass ); ?>
                         </div>
 
-                        <div class="lp_js_timePass_editorContainer lp_timePass_editorContainer lp_u_m-t05"></div>
+                        <div class="lp_js_timePass_editorContainer lp_timePass_editorContainer lp_m--t05"></div>
 
-                        <a href="#" class="lp_js_saveTimePass lp_saveLink button button-primary lp_u_hide"><?php _e( 'Save', 'laterpay' ); ?></a>
-                        <a href="#" class="lp_js_cancelEditingTimePass lp_cancelLink lp_u_inlineBlock lp_u_pd-05 lp_u_hide" data-icon="e"><?php _e( 'Cancel', 'laterpay' ); ?></a>
-                        <a href="#" class="lp_js_editTimePass lp_changeLink lp_u_inlineBlock lp_u_pd-05" data-icon="d"><?php _e( 'Change', 'laterpay' ); ?></a><br>
-                        <a href="#" class="lp_js_deleteTimePass lp_deleteLink lp_u_inlineBlock lp_u_pd-05" data-icon="g"><?php _e( 'Delete', 'laterpay' ); ?></a>
+                        <a href="#" class="lp_js_saveTimePass lp_saveLink button button-primary lp_hide"><?php _e( 'Save', 'laterpay' ); ?></a>
+                        <a href="#" class="lp_js_cancelEditingTimePass lp_cancelLink lp_inlineBlock lp_p--05 lp_hide" data-icon="e"><?php _e( 'Cancel', 'laterpay' ); ?></a>
+                        <a href="#" class="lp_js_editTimePass lp_changeLink lp_inlineBlock lp_p--05" data-icon="d"><?php _e( 'Change', 'laterpay' ); ?></a><br>
+                        <a href="#" class="lp_js_deleteTimePass lp_deleteLink lp_inlineBlock lp_p--05" data-icon="g"><?php _e( 'Delete', 'laterpay' ); ?></a>
 
                         <div class="lp_js_voucherList lp_voucherList">
                             <?php if ( isset( $laterpay['vouchers_list'][ $pass->pass_id ] ) ) : ?>
@@ -247,13 +247,13 @@
                     </div>
                 <?php endforeach; ?>
 
-                <div id="lp_js_timePassTemplate" class="lp_js_timePassWrapper lp_js_addTimePassWrapper lp_timePassWrapper lp_u_clearfix lp_u_hide" data-pass-id="0">
-                    <div class="lp_js_timePassPreview lp_u_left">
+                <div id="lp_js_timePassTemplate" class="lp_js_timePassWrapper lp_js_addTimePassWrapper lp_timePassWrapper lp_clearfix lp_hide" data-pass-id="0">
+                    <div class="lp_js_timePassPreview lp_left">
                         <?php echo $this->render_pass(); ?>
                     </div>
 
-                    <div class="lp_js_timePass_editorContainer lp_timePass_editorContainer lp_u_m-t05">
-                        <form id="lp_js_timePassFormTemplate" class="lp_js_timePassEditor_form lp_timePassEditor_form lp_u_hide lp_u_clearfix" method="post">
+                    <div class="lp_js_timePass_editorContainer lp_timePass_editorContainer lp_m--t05">
+                        <form id="lp_js_timePassFormTemplate" class="lp_js_timePassEditor_form lp_timePassEditor_form lp_hide lp_clearfix" method="post">
                             <input type="hidden" name="form" value="time_pass_form_save">
                             <input type="hidden" name="action" value="laterpay_pricing">
                             <input type="hidden" name="pass_id" value="0" id="lp_js_timePassEditor_hiddenPassId">
@@ -277,7 +277,7 @@
                                         <?php _e( 'access to', 'laterpay' ); ?>
                                     </td>
                                     <td>
-                                        <select name="access_to" class="lp_js_switchTimePassScope lp_input lp_u_w-1">
+                                        <select name="access_to" class="lp_js_switchTimePassScope lp_input lp_1">
                                             <?php echo LaterPay_Helper_Passes::get_select_options( 'access' ); ?>
                                         </select>
                                     </td>
@@ -287,7 +287,7 @@
                                     </td>
                                     <td>
                                         <select name="access_category"
-                                                class="lp_js_switchTimePassScopeCategory lp_input lp_u_w-1"
+                                                class="lp_js_switchTimePassScopeCategory lp_input lp_1"
                                                 style="display:none;">
                                             <?php echo LaterPay_Helper_Passes::get_select_options( 'category' ); ?>
                                         </select>
@@ -324,7 +324,7 @@
                                     <td>
                                         <input type="text"
                                                 name="title"
-                                                class="lp_js_timePassTitleInput lp_input lp_u_w-1"
+                                                class="lp_js_timePassTitleInput lp_input lp_1"
                                                 value="<?php echo LaterPay_Helper_Passes::get_default_options( 'title' ); ?>">
                                     </td>
                                 </tr>
@@ -335,7 +335,7 @@
                                     <td rowspan="2">
                                         <textarea
                                             name="description"
-                                            class="lp_js_timePassDescriptionTextarea lp_timePass_descriptionInput lp_input lp_u_w-1">
+                                            class="lp_js_timePassDescriptionTextarea lp_timePass_descriptionInput lp_input lp_1">
                                             <?php echo LaterPay_Helper_Passes::get_description(); ?>
                                         </textarea>
                                     </td>
@@ -368,15 +368,15 @@
                     </div>
 
                     <a href="#" class="lp_js_saveTimePass lp_saveLink button button-primary"><?php _e( 'Save', 'laterpay' ); ?></a>
-                    <a href="#" class="lp_js_cancelEditingTimePass lp_cancelLink lp_u_inlineBlock lp_u_pd-05" data-icon="e"><?php _e( 'Cancel', 'laterpay' ); ?></a>
-                    <a href="#" class="lp_js_editTimePass lp_changeLink lp_u_inlineBlock lp_u_pd-05 lp_u_hide" data-icon="d"><?php _e( 'Change', 'laterpay' ); ?></a><br>
-                    <a href="#" class="lp_js_deleteTimePass lp_deleteLink lp_u_inlineBlock lp_u_pd-05 lp_u_hide" data-icon="g"><?php _e( 'Delete', 'laterpay' ); ?></a>
+                    <a href="#" class="lp_js_cancelEditingTimePass lp_cancelLink lp_inlineBlock lp_p--05" data-icon="e"><?php _e( 'Cancel', 'laterpay' ); ?></a>
+                    <a href="#" class="lp_js_editTimePass lp_changeLink lp_inlineBlock lp_p--05 lp_hide" data-icon="d"><?php _e( 'Change', 'laterpay' ); ?></a><br>
+                    <a href="#" class="lp_js_deleteTimePass lp_deleteLink lp_inlineBlock lp_p--05 lp_hide" data-icon="g"><?php _e( 'Delete', 'laterpay' ); ?></a>
 
                     <div class="lp_js_voucherList"></div>
                 </div>
             </div>
         </div>
-        <hr class="lp_u_m-1-0 lp_u_m-b3">
+        <hr class="lp_m--1-0 lp_m--b3">
 
 
         <div class="lp_row">
@@ -425,7 +425,7 @@
                         </select>
                         <?php endif; ?>
 
-                        <span id="lp_js_bulkPriceEditor_amountPreposition" class="lp_u_inlineBlock lp_u_m-r05 lp_u_m-l05"><?php _e( 'to', 'laterpay' ); ?></span>
+                        <span id="lp_js_bulkPriceEditor_amountPreposition" class="lp_inlineBlock lp_m--r05 lp_m--l05"><?php _e( 'to', 'laterpay' ); ?></span>
                         <input  type="text"
                                 name="bulk_price"
                                 id="lp_js_setBulkChangeAmount"
@@ -438,8 +438,8 @@
                             </option>
                             <option value="percent">%</option>
                         </select>
-                        <button id="lp_js_applyBulkOperation" class="button button-primary lp_u_m-l2" type="submit"><?php _e( 'Update Prices', 'laterpay' ); ?></button>
-                        <a href="#" id="lp_js_saveBulkOperation" class="lp_editLink lp_saveLink lp_u_inlineBlock lp_u_m-l1 lp_u_pd-0-05" data-icon="f"><?php _e( 'Save', 'laterpay' ); ?></a>
+                        <button id="lp_js_applyBulkOperation" class="button button-primary lp_m--l2" type="submit"><?php _e( 'Update Prices', 'laterpay' ); ?></button>
+                        <a href="#" id="lp_js_saveBulkOperation" class="lp_editLink lp_saveLink lp_inlineBlock lp_m--l1 lp_p--0-05" data-icon="f"><?php _e( 'Save', 'laterpay' ); ?></a>
                     </p>
                 </div>
             </form>
@@ -447,7 +447,7 @@
                 <?php foreach ( $laterpay['bulk_saved_operations'] as $bulk_operation_id => $bulk_operation_data ): ?>
                     <p class="lp_bulkOperation" data-value="<?php echo $bulk_operation_id; ?>">
                         <a href="#" class="lp_js_deleteSavedBulkOperation lp_editLink lp_deleteLink" data-icon="g"><?php _e( 'Delete', 'laterpay' ); ?></a>
-                        <a href="#" class="lp_js_applySavedBulkOperation button button-primary lp_u_m-l2"><?php _e( 'Update Prices', 'laterpay' ); ?></a>
+                        <a href="#" class="lp_js_applySavedBulkOperation button button-primary lp_m--l2"><?php _e( 'Update Prices', 'laterpay' ); ?></a>
                         <span><?php echo $bulk_operation_data['message']; ?></span>
                     </p>
                 <?php endforeach; ?>

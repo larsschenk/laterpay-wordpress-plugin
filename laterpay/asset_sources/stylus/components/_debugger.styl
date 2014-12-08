@@ -18,7 +18,7 @@
     position: fixed;
     transition: 0.25s ease-in-out;
     width: 100%;
-    z-index: $zindex--topmost-1;
+    z-index: $z--topmost-1;
 
     header {
         background-color: darken(hsl(0, 0%, 89%), 13%);
@@ -67,7 +67,7 @@
         font-weight: bold;
         height: 2em;
         line-height: 2em;
-        margin: $fs-025 $fs-025 0 0;
+        margin: $unit--025 $unit--025 0 0;
         text-align: center;
         transform: rotate(90deg);
         transition: transform 0.2s;
@@ -97,9 +97,9 @@
 // debugger pane tabs --------------------------------------------------------------------------------------------------
 .lp_debugger_tabs {
     border-bottom: 1px solid $border--darker;
-    margin: $fs-075 $fs-075 0;
+    margin: $unit--075 $unit--075 0;
     position: relative;
-    z-index: $zindex--base;
+    z-index: $z--base;
 
     li {
         border: 1px solid transparent;
@@ -133,7 +133,7 @@
     a {
         color: $clickable;
         display: block;
-        padding: $fs-05 $fs-1;
+        padding: $unit--05 $unit;
 
         &:hover {
             color: $clickable--highlight;
@@ -148,8 +148,8 @@
             border-radius: 2px;
             color: $text--inverse;
             display: inline-block;
-            margin-left: $fs-05;
-            min-width: $fs-075;
+            margin-left: $unit--05;
+            min-width: $unit--075;
             padding: 1px 5px;
             text-align: center;
         }
@@ -158,7 +158,7 @@
 
 // debugging messages --------------------------------------------------------------------------------------------------
 .lp_debugger_contentList {
-    margin: 0 $fs-075 $fs-1;
+    margin: 0 $unit--075 $unit;
     padding: 0;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -197,7 +197,7 @@
 
     th,
     td {
-        padding: $fs-05;
+        padding: $unit--05;
         text-align: left;
         vertical-align: top;
     }
@@ -207,7 +207,7 @@
         font-weight: normal;
         max-width: 12em;
         overflow: hidden;
-        padding-left: $fs-05;
+        padding-left: $unit--05;
         text-overflow: ellipsi;
         width: 12em;
     }
@@ -235,7 +235,7 @@
     .lp_debugger_logEntryTable {
         tbody th,
         tbody td {
-            padding: 0 $fs-05 $fs-025;
+            padding: 0 $unit--05 $unit--025;
         }
 
         tbody th {
@@ -246,10 +246,10 @@
     }
 
     .lp_debugger_logLevel:before {
-        font-size: $fs-175;
+        font-size: $unit--175;
         height: 0;
         line-height: 0;
-        margin-right: $fs-025;
+        margin-right: $unit--025;
         position: relative;
         top: 0.23em;
     }
@@ -279,7 +279,7 @@
 
     a {
         color: $clickable;
-        padding: $fs-05 0 $fs-05 $fs-05;
+        padding: $unit--05 0 $unit--05 $unit--05;
     }
 
     &:hover a,
@@ -289,7 +289,7 @@
     }
 
     code {
-        font-size: $fs-1;
+        font-size: $unit;
         line-height: 1.3;
     }
 }
