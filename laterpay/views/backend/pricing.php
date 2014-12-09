@@ -229,8 +229,8 @@
                             <?php if ( isset( $laterpay['vouchers_list'][ $pass->pass_id ] ) ) : ?>
                                 <?php foreach ( $laterpay['vouchers_list'][ $pass->pass_id ] as $voucher_code => $voucher_price ): ?>
                                     <div class="lp_js_voucher lp_voucherRow">
-                                        <span class="lp_voucherCodeLabel"><?php echo $voucher_code; ?></span>
-                                        <span class="lp_voucherCodeInfos">
+                                        <span class="lp_voucher-code__label"><?php echo $voucher_code; ?></span>
+                                        <span class="lp_voucher-code__infos">
                                         <?php _e( 'allows purchasing this pass for', 'laterpay' ); ?>
                                             <?php echo $voucher_price . ' ' . $laterpay['standard_currency']; ?>.<br>
                                             <?php
@@ -335,7 +335,7 @@
                                     <td rowspan="2">
                                         <textarea
                                             name="description"
-                                            class="lp_js_timePassDescriptionTextarea lp_timePass_descriptionInput lp_input lp_1">
+                                            class="lp_js_timePassDescriptionTextarea lp_timePass__descriptionInput lp_input lp_1">
                                             <?php echo LaterPay_Helper_Passes::get_description(); ?>
                                         </textarea>
                                     </td>

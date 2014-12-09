@@ -2,9 +2,9 @@
 
 <div class="lp_js_timePass lp_timePass lp_timePass-<?php echo $laterpay_pass['pass_id']; ?>" data-pass-id="<?php echo $laterpay_pass['pass_id']; ?>">
     <section class="lp_timePass__front">
-        <h4 class="lp_js_timePassPreviewTitle lp_timePass_title"><?php echo $laterpay_pass['title']; ?></h4>
-        <p class="lp_js_timePassPreviewDescription lp_timePass_description"><?php echo $laterpay_pass['description']; ?></p>
-        <div class="lp_timePass_actions">
+        <h4 class="lp_js_timePassPreviewTitle lp_timePass__title"><?php echo $laterpay_pass['title']; ?></h4>
+        <p class="lp_js_timePassPreviewDescription lp_timePass__description"><?php echo $laterpay_pass['description']; ?></p>
+        <div class="lp_timePass__actions">
             <a href="#"
              class="lp_js_doPurchase lp_purchaseLink lp_button"
              title="<?php echo __( 'Buy now with LaterPay', 'laterpay' ); ?>"
@@ -17,12 +17,12 @@
                     $laterpay['standard_currency']
                 );
             ?></a>
-            <a href="#" class="lp_js_flipTimePass lp_timePass_termsLink"><?php _e( 'Terms', 'laterpay' ); ?></a>
+            <a href="#" class="lp_js_flipTimePass lp_timePass__terms-link"><?php _e( 'Terms', 'laterpay' ); ?></a>
         </div>
     </section>
     <section class="lp_timePass__back">
 
-        <a href="#" class="lp_js_flipTimePass lp_timePass_frontsideLink"><?php _e( 'Back', 'laterpay' ); ?></a>
+        <a href="#" class="lp_js_flipTimePass lp_timePass__frontside-link"><?php _e( 'Back', 'laterpay' ); ?></a>
 
         <table class="lp_timePass__conditions">
             <tr>

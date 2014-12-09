@@ -735,7 +735,7 @@ class LaterPay_Controller_Post extends LaterPay_Controller_Abstract
         // get the associated CSS class to be applied for the specified variant
         switch ( $variant ) {
             case 'small':
-                $class = 'lp_timePassWidget-small';
+                $class = 'lp_timePassWidget--small';
                 break;
 
             default:

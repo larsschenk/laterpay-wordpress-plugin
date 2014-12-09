@@ -985,8 +985,8 @@
                                         'data-code="' + code + '" ' +
                                         'style="display:none;">' +
                                     '<input type="hidden" name="voucher[]" value="' + code + '|' + priceValue + '">' +
-                                    '<span class="lp_voucherCodeLabel">' + code + '</span>' +
-                                    '<span class="lp_voucherCodeInfos">' +
+                                    '<span class="lp_voucher-code__label">' + code + '</span>' +
+                                    '<span class="lp_voucher-code__infos">' +
                                         lpVars.i18n.voucherText + ' ' + price +
                                     '</span>' +
                                     '<a href="#" class="lp_js_deleteVoucher lp_editLink lp_deleteLink" data-icon="g">' +
@@ -1002,7 +1002,7 @@
                     timesRedeemed   = lpVars.vouchers_statistic[passId] ? lpVars.vouchers_statistic[passId] : 0,
                     price           = priceValue + ' ' + lpVars.defaultCurrency,
                     voucher =   '<div class="lp_js_voucher lp_voucherRow" ' + 'data-code="' + code + '">' +
-                                    '<span class="lp_voucherCodeInfos">' +
+                                    '<span class="lp_voucher-code__infos">' +
                                         lpVars.i18n.voucherText + ' ' + price + '.<br>' +
                                         '<span class="lp_js_voucherTimesRedeemed">' +
                                             timesRedeemed +

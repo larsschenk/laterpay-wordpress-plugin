@@ -169,14 +169,14 @@
             },
 
             showVoucherCodeFeedbackMessage = function(message) {
-                var $feedbackMessage =  $('<div class="lp_voucherCodeFeedbackMessage" style="display:none;">' +
+                var $feedbackMessage =  $('<div class="lp_timePassWidget__voucher-code-feedback-message" style="display:none;">' +
                                             message +
                                         '</div>');
 
                 $($o.voucherCodeWrapper)
                 .prepend($feedbackMessage);
 
-                $feedbackMessage = $('.lp_voucherCodeFeedbackMessage', $o.voucherCodeWrapper);
+                $feedbackMessage = $('.lp_timePassWidget__voucher-code-feedback-message', $o.voucherCodeWrapper);
                 $feedbackMessage
                 .fadeIn(250)
                 .click(function() {
