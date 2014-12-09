@@ -1,5 +1,4 @@
-
-// debugger pane
+// debugger pane component
 
 // debugger pane header with LaterPay vector logo ----------------------------------------------------------------------
 .lp_debugger,
@@ -95,7 +94,7 @@
 
 
 // debugger pane tabs --------------------------------------------------------------------------------------------------
-.lp_debugger_tabs {
+.lp_debugger__tabs {
     border-bottom: 1px solid $border--darker;
     margin: $unit--075 $unit--075 0;
     position: relative;
@@ -156,8 +155,9 @@
     }
 }
 
+
 // debugging messages --------------------------------------------------------------------------------------------------
-.lp_debugger_contentList {
+.lp_debugger__content-list {
     margin: 0 $unit--075 $unit;
     padding: 0;
     overflow-x: hidden;
@@ -174,7 +174,7 @@
         list-style: none outside none;
     }
 
-    .lp_debugger_content li {
+    .lp_debugger__content li {
         border-bottom: 1px solid darken(hsl(0, 0%, 87%), 3%);
     }
 
@@ -232,7 +232,7 @@
         }
     }
 
-    .lp_debugger_logEntryTable {
+    .lp_debugger__log-entry-table {
         tbody th,
         tbody td {
             padding: 0 $unit--05 $unit--025;
@@ -245,7 +245,7 @@
         }
     }
 
-    .lp_debugger_logLevel:before {
+    .lp_debugger__log-level:before {
         font-size: $unit--175;
         height: 0;
         line-height: 0;
@@ -255,24 +255,24 @@
     }
 
     // infos
-    .lp_debugger_logLevel-100:before
-    .lp_debugger_logLevel-200:before
-    .lp_debugger_logLevel-250:before {
+    .lp_debugger__log-level-100:before
+    .lp_debugger__log-level-200:before
+    .lp_debugger__log-level-250:before {
         color: $text--lighter;
         content: 'm';
     }
 
     // warnings
-    .lp_debugger_logLevel-300:before {
+    .lp_debugger__log-level-300:before {
         color: hsl(39, 100%, 50%);
         content: 'n';
     }
 
     // errors
-    .lp_debugger_logLevel-400:before
-    .lp_debugger_logLevel-500:before
-    .lp_debugger_logLevel-550:before
-    .lp_debugger_logLevel-600:before {
+    .lp_debugger__log-level-400:before
+    .lp_debugger__log-level-500:before
+    .lp_debugger__log-level-550:before
+    .lp_debugger__log-level-600:before {
         color: hsl(6, 100%, 50%);
         content: 'o';
     }
@@ -293,6 +293,7 @@
         line-height: 1.3;
     }
 }
+
 
 // admin bar menu for toggling debugger pane ---------------------------------------------------------------------------
 // WordPress selector

@@ -464,14 +464,14 @@
                 }
 
                 return '<li>' +
-                            '<span class="lp_sparklineBar">' + sparklineData + '</span>' +
+                            '<span class="lp_sparkline--bar">' + sparklineData + '</span>' +
                             '<strong class="' + valueClass + '">' + kpi + '</strong>' +
                             '<i><a href="#" class="lp_js_toggleItemDetails">' + itemName + '</a></i>' +
                         '</li>';
             },
 
             renderSparklines = function($context) {
-                var $sparkline  = $('.lp_sparklineBar', $context),
+                var $sparkline  = $('.lp_sparkline--bar', $context),
                     // get the number of data points from the first matched sparkline
                     dataPoints  = $sparkline.first().text().split(',').length;
 

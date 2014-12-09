@@ -257,7 +257,7 @@
                 bindPostStatisticsEvents();
 
                 // render sparklines within post statistics pane
-                $('.lp_sparklineBar', $o.postStatisticsPane).peity('bar', {
+                $('.lp_sparkline--bar', $o.postStatisticsPane).peity('bar', {
                     delimiter   : ';',
                     width       : 182,
                     height      : 42,
@@ -279,7 +279,7 @@
                                 }
                 });
 
-                $('.lp_sparklineBackgroundBar', $o.postStatisticsPane).peity('bar', {
+                $('.lp_sparkline--background-bar', $o.postStatisticsPane).peity('bar', {
                     delimiter   : ';',
                     width       : 182,
                     height      : 42,

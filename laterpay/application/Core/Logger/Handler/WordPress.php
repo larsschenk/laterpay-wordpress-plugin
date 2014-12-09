@@ -99,7 +99,7 @@ class LaterPay_Core_Logger_Handler_WordPress extends LaterPay_Core_Logger_Handle
                     <h2 data-icon="a"><?php _e( 'Debugger', 'laterpay' ); ?></h2>
                 </header>
 
-                <ul class="lp_debugger_tabs lp_clearfix">
+                <ul class="lp_debugger__tabs lp_clearfix">
                     <li class="lp_is-selected">
                         <a href="#"><?php echo sprintf( __( 'Messages<span>%s</span>', 'laterpay' ), count( $this->records ) ); ?></a>
                     </li>
@@ -115,8 +115,8 @@ class LaterPay_Core_Logger_Handler_WordPress extends LaterPay_Core_Logger_Handle
                     <?php } ?>
                 </ul>
 
-                <ul class="lp_debugger_contentList">
-                    <li class="lp_debugger_content">
+                <ul class="lp_debugger__content-list">
+                    <li class="lp_debugger__content">
                         <ul>
                             <?php echo $this->get_formatter()->format_batch( $this->records ); ?>
                         </ul>
@@ -127,7 +127,7 @@ class LaterPay_Core_Logger_Handler_WordPress extends LaterPay_Core_Logger_Handle
                                 continue;
                             }
                     ?>
-                        <li class="lp_debugger_content lp_is-hidden">
+                        <li class="lp_debugger__content lp_is-hidden">
                             <table>
                                 <?php foreach ( $tab[ 'content' ] as $key => $value  ): ?>
                                     <tr>
