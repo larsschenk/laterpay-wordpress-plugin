@@ -54,14 +54,14 @@
                         <input type="hidden" name="form"    value="ratings">
                         <input type="hidden" name="action"  value="laterpay_appearance">
                         <?php if ( function_exists( 'wp_nonce_field' ) ) { wp_nonce_field('laterpay_form'); } ?>
-                        <label class="lp_toggle_label">
+                        <label class="lp_toggle__label">
                             <input type="checkbox"
                                    name="enable_ratings"
                                    id="lp_js_enableRatingsToggle"
-                                   class="lp_toggle_input"
+                                   class="lp_toggle__input"
                                    <?php if ( $laterpay['is_rating_enabled'] ): ?>checked<?php endif; ?>>
-                            <span class="lp_toggle_text" data-on="<?php _e( 'on', 'laterpay' ); ?>" data-off="<?php _e( 'off', 'laterpay' ); ?>"></span>
-                            <span class="lp_toggle_handle"></span>
+                            <span class="lp_toggle__text" data-on="<?php _e( 'on', 'laterpay' ); ?>" data-off="<?php _e( 'off', 'laterpay' ); ?>"></span>
+                            <span class="lp_toggle__handle"></span>
                         </label>
                     </form>
                 </div>

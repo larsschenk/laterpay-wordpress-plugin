@@ -302,14 +302,14 @@
                                                 value="<?php echo LaterPay_Helper_View::format_number( LaterPay_Helper_Passes::get_default_options( 'price' ) ) ?>">
                                         <?php echo $laterpay['standard_currency']; ?>
                                         <?php _e( 'later', 'laterpay' ); ?><div class="lp_toggle">
-                                            <label class="lp_toggle_label lp_toggle_label_pass">
+                                            <label class="lp_toggle__label lp_toggle__label--pass">
                                                 <input type="checkbox"
                                                        name="revenue_model"
-                                                       class="lp_js_timePassRevenueModelInput lp_toggle_input"
+                                                       class="lp_js_timePassRevenueModelInput lp_toggle__input"
                                                        value="sis"
                                                        <?php if ( LaterPay_Helper_Passes::get_default_options( 'revenue_model' ) === 'sis' ) { echo 'checked'; } ?>>
-                                                <span class="lp_toggle_text" data-on="" data-off=""></span>
-                                                <span class="lp_toggle_handle"></span>
+                                                <span class="lp_toggle__text" data-on="" data-off=""></span>
+                                                <span class="lp_toggle__handle"></span>
                                             </label>
                                         </div><?php _e( 'immediately', 'laterpay' ); ?>
                                     </td>
