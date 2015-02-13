@@ -127,109 +127,124 @@
             bindEvents = function() {
                 // toggle dropdown_list on touch devices
                 $($o.dropdownCurrentItem)
-                .click(function() {
-                    $(this).parent($o.dropdown).addClass($o.expanded);
-                });
+                    .click(function() {
+                        $(this).parent($o.dropdown).addClass($o.expanded);
+                    });
 
                 // re-render dashboard in selected configuration
                 $o.configurationSelection
-                .mousedown(function() {
-                    var startTimestamp = $o.currentInterval.data( 'startTimestamp' ),
-                        interval;
-                    // change selected item to clicked item
-                    $(this)
-                        .parents($o.dropdown)
-                        .removeClass($o.expanded)
+                    .mousedown(function() {
+                        var startTimestamp = $o.currentInterval.data( 'startTimestamp' ),
+                            interval;
+                        // change selected item to clicked item
+                        $(this)
+                            .parents($o.dropdown)
+                            .removeClass($o.expanded)
                             .find($o.dropdownCurrentItem)
                             .text($(this).text())
-                        .end()
+                            .end()
                             .find('.' + $o.selected)
                             .removeClass($o.selected)
-                        .end()
-                    .end()
-                    .addClass($o.selected);
+                            .end()
+                            .end()
+                            .addClass($o.selected);
 
-                    interval = getInterval();
-                    setTimeRange(startTimestamp, interval);
-                    loadDashboard(false);
-                })
-                .click(function(e) {e.preventDefault();});
+                        interval = getInterval();
+                        setTimeRange(startTimestamp, interval);
+                        loadDashboard(false);
+                    })
+                    .click(function(e) {e.preventDefault();});
 
                 // re-render dashboard with data of next interval
                 $o.nextInterval
-                .mousedown(function() {
-                    var startTimestamp  = $o.currentInterval.data('startTimestamp'),
-                        interval        = getInterval(),
-                        currentDate     = new Date(),
-                        startDate;
+                    .mousedown(function() {
+                        var startTimestamp  = $o.currentInterval.data('startTimestamp'),
+                            interval        = getInterval(),
+                            currentDate     = new Date(),
+                            startDate;
 
-                    // + 1 day
-                    startTimestamp  = startTimestamp + 86400;
+                        // + 1 day
+                        startTimestamp  = startTimestamp + 86400;
 
-                    startDate       = new Date(startTimestamp * 1000);
+                        startDate       = new Date(startTimestamp * 1000);
                         if (startDate.getDate() >= currentDate.getDate()) {
                             // FIXME: instead of showing an error,
                             // we should hide the link for selecting the next interval!
-                        setMessage(lpVars.i18n.noFutureInterval, false);
-                        return;
-                    }
+                            setMessage(lpVars.i18n.noFutureInterval, false);
+                            return;
+                        }
 
-                    setTimeRange(startTimestamp, interval);
-                    loadDashboard(true);
-                })
-                .click(function(e) {e.preventDefault();});
+                        setTimeRange(startTimestamp, interval);
+                        loadDashboard(true);
+                    })
+                    .click(function(e) {e.preventDefault();});
 
                 // re-render dashboard with data of previous interval
                 $o.previousInterval
-                .mousedown(function() {
-                    var startTimestamp = $o.currentInterval.data('startTimestamp'),
-                        interval = getInterval();
+                    .mousedown(function() {
+                        var startTimestamp = $o.currentInterval.data('startTimestamp'),
+                            interval = getInterval();
 
-                    // - 1 day
-                    startTimestamp  = startTimestamp - 86400;
+                        // - 1 day
+                        startTimestamp  = startTimestamp - 86400;
 
-                    setTimeRange(startTimestamp, interval);
-                    loadDashboard(false);
+                        setTimeRange(startTimestamp, interval);
+                        loadDashboard(false);
 
-                })
-                .click(function(e) {e.preventDefault();});
+                    })
+                    .click(function(e) {e.preventDefault();});
 
                 // refresh dashboard
                 $o.refreshDashboard
-                .mousedown(function() {
-                    loadDashboard(true);
-                })
-                .click(function(e) {e.preventDefault();});
+                    .mousedown(function() {
+                        loadDashboard(true);
+                    })
+                    .click(function(e) {e.preventDefault();});
 
                 $($o.revenueModelChoices)
-                .mousedown(function() {
-                    loadDashboard(true);
-                })
-                .click(function(e) {e.preventDefault();});
+                    .mousedown(function() {
+                        loadDashboard(true);
+                    })
+                    .click(function(e) {e.preventDefault();});
 
                 $('body')
-                .on('mousedown', $o.toggleItemDetails, function() {
-                    alert('Toggling post details coming soon');
-                })
-                .on('click', $o.toggleItemDetails, function(e) {e.preventDefault();});
+                    .on('mousedown', $o.toggleItemDetails, function() {
+
+                        var _self               = $(this),
+                            postId              = _self.data('postId'),
+                            $resultContainer    = _self.parent().next('.lp_js_postDetails');
+
+                        $resultContainer.toggleClass('lp_js_postDetailsHidden');
+
+                        if(!$resultContainer.hasClass('lp_js_postDetailsLoaded')) {
+                            loadPostData(postId).done(function (response) {
+                                $resultContainer.html(response.data);
+                                $resultContainer.addClass('lp_js_postDetailsLoaded');
+
+                                renderPostDataSparkline($resultContainer);
+
+                            });
+                        }
+                    })
+                    .on('click', $o.toggleItemDetails, function(e) {e.preventDefault();});
 
                 $($o.viewSelector)
-                .mousedown(function() {
-                    var viewType = $(this).attr('id');
+                    .mousedown(function() {
+                        var viewType = $(this).attr('id');
 
-                    if ( viewType === 'lp_js_normal_view' ) {
-                        $o.normalView.addClass($o.active);
-                        $o.tpView.removeClass($o.active);
-                        $o.normalViewTab.show();
-                        $o.tpViewTab.hide();
-                    } else {
-                        $o.normalView.removeClass($o.active);
-                        $o.tpView.addClass($o.active);
-                        $o.tpViewTab.show();
-                        $o.normalViewTab.hide();
-                    }
-                })
-                .click(function(e) {e.preventDefault();});
+                        if ( viewType === 'lp_js_normal_view' ) {
+                            $o.normalView.addClass($o.active);
+                            $o.tpView.removeClass($o.active);
+                            $o.normalViewTab.show();
+                            $o.tpViewTab.hide();
+                        } else {
+                            $o.normalView.removeClass($o.active);
+                            $o.tpView.addClass($o.active);
+                            $o.tpViewTab.show();
+                            $o.normalViewTab.hide();
+                        }
+                    })
+                    .click(function(e) {e.preventDefault();});
             },
 
             getInterval = function() {
@@ -257,15 +272,15 @@
                     timeRange = to.getDate() + '.' + (to.getMonth() + 1) + '.' + to.getFullYear();
                 } else {
                     timeRange = from.getDate() + '.' + (from.getMonth() + 1) + '.' + from.getFullYear() +
-                                ' - ' +
-                                to.getDate() + '.' + (to.getMonth() + 1) + '.' + to.getFullYear();
+                    ' - ' +
+                    to.getDate() + '.' + (to.getMonth() + 1) + '.' + to.getFullYear();
                 }
 
                 // set the new startTimestamp as data attribute for refreshing the dashboard data.
                 // set the new timeRange
                 $o.currentInterval
-                .data('startTimestamp', startTimestamp)
-                .html(timeRange);
+                    .data('startTimestamp', startTimestamp)
+                    .html(timeRange);
             },
 
             loadDashboardData = function(section, refresh, pass) {
@@ -337,57 +352,77 @@
                 }
             },
 
+            loadPostData = function(postId) {
+                var requestData     = {
+                        // WP Ajax action
+                        'action'          : 'laterpay_get_dashboard_post_data',
+                        // nonce for validation and XSS protection
+                        '_wpnonce'        : lpVars.nonces.dashboard,
+                        // the post_id
+                        'post_id'         : postId
+                    },
+                    jqxhr;
+
+                jqxhr = $.ajax({
+                    'url'      : lpVars.ajaxUrl,
+                    'async'    : true,
+                    'method'   : 'POST',
+                    'data'     : requestData,
+                });
+                return jqxhr;
+            },
+
             loadConvertingItems = function(refresh) {
                 showLoadingIndicator($o.conversionDiagram);
 
                 loadDashboardData('converting_items', refresh)
-                .done(function(response) {
-                    // generate a data point with 100% y-value for each conversion rate column as background
-                    var backColumns = [];
-                    i = 0;
-                    l = response.data.y.length;
-                    for (i; i < l; i++) {
-                        backColumns.push([i + 1, 100]);
-                    }
+                    .done(function(response) {
+                        // generate a data point with 100% y-value for each conversion rate column as background
+                        var backColumns = [];
+                        i = 0;
+                        l = response.data.y.length;
+                        for (i; i < l; i++) {
+                            backColumns.push([i + 1, 100]);
+                        }
 
-                    var plotOptions = {
-                            xaxis: {
-                                ticks           : response.data.x,
-                            },
-                            yaxis: {
-                                tickSize        : null,
-                                max             : 100,
-                            }
-                        },
-                        plotData = [
-                            {
-                                data            : backColumns,
-                                bars            : {
-                                    align       : 'center',
-                                    barWidth    : 0.6,
-                                    fillColor   : $o.colorBackground,
-                                    horizontal  : false,
-                                    lineWidth   : 0,
-                                    show        : true,
+                        var plotOptions = {
+                                xaxis: {
+                                    ticks           : response.data.x,
+                                },
+                                yaxis: {
+                                    tickSize        : null,
+                                    max             : 100,
                                 }
                             },
-                            {
-                                data            : response.data.y,
-                                bars            : {
-                                    align       : 'center',
-                                    barWidth    : 0.4,
-                                    fillColor   : $o.colorBackgroundLaterpay,
-                                    horizontal  : false,
-                                    lineWidth   : 0,
-                                    show        : true,
-                                }
-                            },
-                        ];
+                            plotData = [
+                                {
+                                    data            : backColumns,
+                                    bars            : {
+                                        align       : 'center',
+                                        barWidth    : 0.6,
+                                        fillColor   : $o.colorBackground,
+                                        horizontal  : false,
+                                        lineWidth   : 0,
+                                        show        : true,
+                                    }
+                                },
+                                {
+                                    data            : response.data.y,
+                                    bars            : {
+                                        align       : 'center',
+                                        barWidth    : 0.4,
+                                        fillColor   : $o.colorBackgroundLaterpay,
+                                        horizontal  : false,
+                                        lineWidth   : 0,
+                                        show        : true,
+                                    }
+                                },
+                            ];
 
-                    plotOptions = $.extend(true, plotDefaultOptions, plotOptions);
-                    $.plot($o.conversionDiagram, plotData, plotOptions);
-                })
-                .always(function() {removeLoadingIndicator($o.conversionDiagram);});
+                        plotOptions = $.extend(true, plotDefaultOptions, plotOptions);
+                        $.plot($o.conversionDiagram, plotData, plotOptions);
+                    })
+                    .always(function() {removeLoadingIndicator($o.conversionDiagram);});
             },
 
             loadTimePassLifecycles = function(refresh) {
@@ -399,67 +434,67 @@
                     showLoadingIndicator($(data[index]));
 
                     loadDashboardData('time_passes_expiry', refresh, pass_id)
-                    .done(function(response) {
-                        var max         = response.data.max,
-                            backColumns = [];
+                        .done(function(response) {
+                            var max         = response.data.max,
+                                backColumns = [];
 
-                        i = 0;
-                        l = response.data.y.length;
-                        for (i; i < l; i++) {
-                            backColumns.push([i, max]);
-                        }
+                            i = 0;
+                            l = response.data.y.length;
+                            for (i; i < l; i++) {
+                                backColumns.push([i, max]);
+                            }
 
-                        // var markings = [
-                        //         {
-                        //             color               : $o.colorBorder,
-                        //             lineWidth           : 1,
-                        //             xaxis               : {
-                        //                 from            : 3.5,
-                        //                 to              : 3.5,
-                        //             },
-                        //         },
-                        //         {
-                        //             color               : $o.colorBorder,
-                        //             lineWidth           : 1,
-                        //             xaxis               : {
-                        //                 from            : 11.5,
-                        //                 to              : 11.5,
-                        //             },
-                        //         },
-                        //     ];
-                        var plotOptions = {
-                                xaxis               : {
-                                    ticks           : response.data.x,
-                                },
-                                yaxis               : {
-                                    show            : false,
-                                    max             : max,
-                                    tickFormatter   : function(val) {
-                                                        return parseInt(val, 10);
-                                                    }
-                                },
-                                // grid                : {
-                                //     markings        : markings,
-                                // },
-                            },
-                            plotData = [
-                                {
-                                    data            : response.data.y,
-                                    bars            : {
-                                        align       : 'center',
-                                        barWidth    : 0.4,
-                                        fillColor   : $o.colorBackgroundLaterpay,
-                                        horizontal  : false,
-                                        lineWidth   : 0,
-                                        show        : true,
+                            // var markings = [
+                            //         {
+                            //             color               : $o.colorBorder,
+                            //             lineWidth           : 1,
+                            //             xaxis               : {
+                            //                 from            : 3.5,
+                            //                 to              : 3.5,
+                            //             },
+                            //         },
+                            //         {
+                            //             color               : $o.colorBorder,
+                            //             lineWidth           : 1,
+                            //             xaxis               : {
+                            //                 from            : 11.5,
+                            //                 to              : 11.5,
+                            //             },
+                            //         },
+                            //     ];
+                            var plotOptions = {
+                                    xaxis               : {
+                                        ticks           : response.data.x,
                                     },
+                                    yaxis               : {
+                                        show            : false,
+                                        max             : max,
+                                        tickFormatter   : function(val) {
+                                            return parseInt(val, 10);
+                                        }
+                                    },
+                                    // grid                : {
+                                    //     markings        : markings,
+                                    // },
                                 },
-                            ];
+                                plotData = [
+                                    {
+                                        data            : response.data.y,
+                                        bars            : {
+                                            align       : 'center',
+                                            barWidth    : 0.4,
+                                            fillColor   : $o.colorBackgroundLaterpay,
+                                            horizontal  : false,
+                                            lineWidth   : 0,
+                                            show        : true,
+                                        },
+                                    },
+                                ];
 
-                        plotOptions = $.extend(true, plotDefaultOptions, plotOptions);
-                        $.plot($(data[index]), plotData, plotOptions);
-                    })
-                    .always(function() {removeLoadingIndicator($(data[index]));});
+                            plotOptions = $.extend(true, plotDefaultOptions, plotOptions);
+                            $.plot($(data[index]), plotData, plotOptions);
+                        })
+                        .always(function() {removeLoadingIndicator($(data[index]));});
                 });
             },
 
@@ -638,8 +673,45 @@
                 return '<li>' +
                     '<span class="lp_sparklineBar">' + sparklineData + '</span>' +
                     '<strong class="' + valueClass + '">' + kpi + '</strong>' +
-                    '<i><a href="#" class="lp_js_toggleItemDetails">' + itemName + '</a></i>' +
+                    '<i>' +
+                    '<a href="#" data-post-id="' + postId + '" class="lp_js_toggleItemDetails">' + itemName + '</a>' +
+                    '</i>' +
+                    '<div class="lp_js_postDetails lp_js_postDetailsHidden"></div>' +
                     '</li>';
+            },
+
+            renderPostDataSparkline = function($context) {
+
+                // render sparklines within post statistics pane
+                $('.lp_sparklineBar', $context).peity('bar', {
+                    delimiter   : ';',
+                    width       : 182,
+                    height      : 42,
+                    gap         : 1,
+                    fill        : function(value, index, array) {
+                        var date        = new Date(),
+                            daysCount   = array.length,
+                            color       = '#999';
+                        date.setDate(date.getDate() - (daysCount - index));
+                        // highlight the last (current) day
+                        if (index === (daysCount - 1)) {
+                            color = '#555';
+                        }
+                        // highlight Saturdays and Sundays
+                        if (date.getDay() === 0 || date.getDay() === 6) {
+                            color = '#c1c1c1';
+                        }
+                        return color;
+                    }
+                });
+
+                $('.lp_sparklineBackgroundBar', $context).peity('bar', {
+                    delimiter   : ';',
+                    width       : 182,
+                    height      : 42,
+                    gap         : 1,
+                    fill        : function() { return '#ddd'; }
+                });
             },
 
             renderSparklines = function($context) {

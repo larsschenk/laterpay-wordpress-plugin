@@ -99,6 +99,51 @@ class LaterPay_Controller_Admin_Dashboard extends LaterPay_Controller_Abstract
     }
 
     /**
+     * Ajax callback to load the detailed data of a post.
+     *
+     * @wp-hook wp_ajax_laterpay_get_dashboard_post_data
+     *
+     * @return void
+     */
+    public function ajax_get_post_data() {
+        $this->validate_ajax_nonce();
+
+        if ( ! isset( $_POST[ 'post_id' ] ) ) {
+            $error = array(
+                'message'   => __( 'Missing param on request.', 'laterpay'),
+                'step'      => 1,
+            );
+            wp_send_json_error( $error );
+            exit;
+        }
+
+        $post_id= absint( $_POST[ 'post_id' ] );
+        $post   = get_post( $post_id );
+
+        if ( $post === null ) {
+            $error = array(
+                'message'   => __( 'Invalid post_id on request.', 'laterpay'),
+                'step'      => 2,
+            );
+            wp_send_json_error( $error );
+            exit;
+        }
+
+        $view_args = array(
+            'statistic' => LaterPay_Helper_Statistics::get_post_statistics( $post )
+        );
+        $this->assign( 'laterpay', $view_args );
+        $data = $this->get_text_view( 'frontend/partials/post/post_statistic_data' );
+
+        $response = array(
+            'data'      => $data,
+            'success'   => true,
+        );
+        wp_send_json( $response );
+        exit;
+    }
+
+    /**
      * Ajax callback to refresh the dashboard data.
      *
      * @wp-hook wp_ajax_laterpay_get_dashboard_data

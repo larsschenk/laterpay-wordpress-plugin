@@ -220,4 +220,96 @@ class LaterPay_Helper_Statistics
         return null;
     }
 
+    /**
+     * Generate performance data statistics for post.
+     *
+     * @param WP_Post $post
+     *
+     * @return array  $statistic_args
+     */
+    public static function get_post_statistics( WP_Post $post ) {
+        // get currency
+        $currency = get_option( 'laterpay_currency' );
+
+        // get historical performance data for post
+        $payments_history_model = new LaterPay_Model_Payments_History();
+        $post_views_model       = new LaterPay_Model_Post_Views();
+        $currency_model         = new LaterPay_Model_Currency();
+
+        // get total revenue and total sales
+        $total = array();
+        $history_total = (array) $payments_history_model->get_total_history_by_post_id( $post->ID );
+        foreach ( $history_total as $item ) {
+            $currency_short_name = $currency_model->get_short_name_by_currency_id( $item->currency_id );
+            $total[$currency_short_name]['sum']      = round( $item->sum, 2 );
+            $total[$currency_short_name]['quantity'] = $item->quantity;
+        }
+
+        // get revenue
+        $last30DaysRevenue = array();
+        $history_last30DaysRevenue = (array) $payments_history_model->get_last_30_days_history_by_post_id( $post->ID );
+        foreach ( $history_last30DaysRevenue as $item ) {
+            $currency_short_name = $currency_model->get_short_name_by_currency_id( $item->currency_id );
+            $last30DaysRevenue[$currency_short_name][$item->date] = array(
+                'sum'       => round( $item->sum, 2 ),
+                'quantity'  => $item->quantity,
+            );
+        }
+
+        $todayRevenue = array();
+        $history_todayRevenue = (array) $payments_history_model->get_todays_history_by_post_id( $post->ID );
+        foreach ( $history_todayRevenue as $item ) {
+            $currency_short_name = $currency_model->get_short_name_by_currency_id( $item->currency_id );
+            $todayRevenue[$currency_short_name]['sum']       = round( $item->sum, 2 );
+            $todayRevenue[$currency_short_name]['quantity']  = $item->quantity;
+        }
+
+        // get visitors
+        $last30DaysVisitors = array();
+        $history_last30DaysVisitors = (array) $post_views_model->get_last_30_days_history( $post->ID );
+        foreach ( $history_last30DaysVisitors as $item ) {
+            $last30DaysVisitors[$item->date] = array(
+                'quantity' => $item->quantity,
+            );
+        }
+
+        $todayVisitors = (array) $post_views_model->get_todays_history( $post->ID );
+        $todayVisitors = $todayVisitors[0]->quantity;
+
+        // get buyers (= conversion rate)
+        $last30DaysBuyers = array();
+        if ( isset( $last30DaysRevenue[$currency] ) ) {
+            $revenues = $last30DaysRevenue[$currency];
+        } else {
+            $revenues = array();
+        }
+        foreach ( $revenues as $date => $item ) {
+            $percentage = 0;
+            if ( isset( $last30DaysVisitors[$date] ) && ! empty( $last30DaysVisitors[$date]['quantity'] ) ) {
+                $percentage = round( 100 * $item['quantity'] / $last30DaysVisitors[$date]['quantity'] );
+            }
+            $last30DaysBuyers[$date] = array( 'percentage' => $percentage );
+        }
+
+        $todayBuyers = 0;
+        if ( ! empty( $todayVisitors ) && isset( $todayRevenue[$currency] ) ) {
+            // percentage of buyers (sales divided by visitors)
+            $todayBuyers = round( 100 * $todayRevenue[$currency]['quantity'] / $todayVisitors );
+        }
+
+        // assign variables
+        $statistic_args = array(
+            'total'                 => $total,
+            'last30DaysRevenue'     => $last30DaysRevenue,
+            'todayRevenue'          => $todayRevenue,
+            'last30DaysBuyers'      => $last30DaysBuyers,
+            'todayBuyers'           => $todayBuyers,
+            'last30DaysVisitors'    => $last30DaysVisitors,
+            'todayVisitors'         => $todayVisitors,
+        );
+
+        return $statistic_args;
+    }
+
+
 }
