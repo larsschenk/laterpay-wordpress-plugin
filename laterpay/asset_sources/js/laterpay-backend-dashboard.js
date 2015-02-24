@@ -65,11 +65,13 @@
                 timepassDiagram         : $('.lp_js_timepassDiagram'),
 
                 // state classes
-                expanded                : 'lp_is-expanded',
-                selected                : 'lp_is-selected',
                 active                  : 'lp_is-active',
                 delayed                 : 'lp_is-delayed',
                 disabled                : 'lp_is-disabled',
+                expanded                : 'lp_is-expanded',
+                hidden                  : 'lp_is-hidden',
+                loaded                  : 'lp_is-loaded',
+                selected                : 'lp_is-selected',
             },
 
             plotDefaultOptions = {
@@ -128,87 +130,87 @@
             bindEvents = function() {
                 // toggle dropdown_list on touch devices
                 $($o.dropdownCurrentItem)
-                    .click(function() {
-                        $(this).parent($o.dropdown).addClass($o.expanded);
-                    });
+                .click(function() {
+                    $(this).parent($o.dropdown).addClass($o.expanded);
+                });
 
                 // switch interval or revenue model filter
                 $o.configurationSelection
-                    .mousedown(function() {
-                        var startTimestamp  = $o.currentInterval.data('startTimestamp'),
-                            oldInterval     = getInterval(),
-                            nextStartTimestamp,
-                            nextEndTimestamp,
-                            newInterval;
+                .mousedown(function() {
+                    var startTimestamp  = $o.currentInterval.data('startTimestamp'),
+                        oldInterval     = getInterval(),
+                        nextStartTimestamp,
+                        nextEndTimestamp,
+                        newInterval;
 
-                        // mark clicked item as selected
-                        $(this)
-                            .parents($o.dropdown)
-                            .removeClass($o.expanded)
-                            .find($o.dropdownCurrentItem)
-                            .text($(this).text())
-                            .end()
-                            .find('.' + $o.selected)
-                            .removeClass($o.selected)
-                            .end()
-                            .end()
-                            .addClass($o.selected);
+                    // mark clicked item as selected
+                    $(this)
+                        .parents($o.dropdown)
+                        .removeClass($o.expanded)
+                        .find($o.dropdownCurrentItem)
+                        .text($(this).text())
+                        .end()
+                        .find('.' + $o.selected)
+                        .removeClass($o.selected)
+                        .end()
+                        .end()
+                        .addClass($o.selected);
 
-                        newInterval = getInterval();
+                    newInterval = getInterval();
 
-                        // for the 24 hour interval it's allowed to view 'today', but when switching to another interval
-                        // we have to automatically switch back to 'yesterday'
-                        if (oldInterval === 'day' && newInterval !== 'day') {
-                            var todayDate   = new Date(),
-                                startDate   = new Date(startTimestamp * 1000);
+                    // for the 24 hour interval it's allowed to view 'today', but when switching to another interval
+                    // we have to automatically switch back to 'yesterday'
+                    if (oldInterval === 'day' && newInterval !== 'day') {
+                        var todayDate   = new Date(),
+                            startDate   = new Date(startTimestamp * 1000);
 
-                            todayDate.setHours(0, 0, 0, 0);
-                            startDate.setHours(0, 0, 0, 0);
+                        todayDate.setHours(0, 0, 0, 0);
+                        startDate.setHours(0, 0, 0, 0);
 
-                            if (todayDate.getTime() === startDate.getTime()) {
-                                startTimestamp = startTimestamp - getIntervalDiff(oldInterval);
-                            }
+                        if (todayDate.getTime() === startDate.getTime()) {
+                            startTimestamp = startTimestamp - getIntervalDiff(oldInterval);
                         }
+                    }
 
-                        // check, if the 'next' button should be visible or hidden for the given interval
-                        nextStartTimestamp  = startTimestamp + getIntervalDiff(newInterval);
-                        switchNextIntervalState(nextStartTimestamp, newInterval);
+                    // check, if the 'next' button should be visible or hidden for the given interval
+                    nextStartTimestamp  = startTimestamp + getIntervalDiff(newInterval);
+                    switchNextIntervalState(nextStartTimestamp, newInterval);
 
-                        // check, if the 'previous' button should be visible or hidden for the given interval
-                        nextEndTimestamp    = startTimestamp - getIntervalDiff(newInterval);
-                        switchPreviousIntervalState(nextEndTimestamp, newInterval);
+                    // check, if the 'previous' button should be visible or hidden for the given interval
+                    nextEndTimestamp    = startTimestamp - getIntervalDiff(newInterval);
+                    switchPreviousIntervalState(nextEndTimestamp, newInterval);
 
-                        setTimeRange(startTimestamp, newInterval);
-                        loadDashboard(false);
-                    })
-                    .click(function(e) {e.preventDefault();});
+                    setTimeRange(startTimestamp, newInterval);
+                    loadDashboard(false);
+                })
+                .click(function(e) {e.preventDefault();});
 
                 // load next interval
                 $o.nextInterval
-                    .mousedown(function() {
-                        loadNextInterval();
-                    })
-                    .click(function(e) {e.preventDefault();});
+                .mousedown(function() {
+                    loadNextInterval();
+                })
+                .click(function(e) {e.preventDefault();});
 
                 // load previous interval
                 $o.previousInterval
-                    .mousedown(function() {
-                        loadPreviousInterval();
-                    })
-                    .click(function(e) {e.preventDefault();});
+                .mousedown(function() {
+                    loadPreviousInterval();
+                })
+                .click(function(e) {e.preventDefault();});
 
                 $('body')
-                    .on('mousedown', $o.toggleItemDetails, function() {
-                        alert('Toggling post details coming soon');
-                    })
-                    .on('click', $o.toggleItemDetails, function(e) {e.preventDefault();});
+                .on('mousedown', $o.toggleItemDetails, function() {
+                    toggleItemDetails($(this));
+                })
+                .on('click', $o.toggleItemDetails, function(e) {e.preventDefault();});
 
                 // switch between normal and time passes view
                 $o.viewSelector
-                    .mousedown(function() {
-                        switchDashboardView($(this));
-                    })
-                    .click(function(e) {e.preventDefault();});
+                .mousedown(function() {
+                    switchDashboardView($(this));
+                })
+                .click(function(e) {e.preventDefault();});
             },
 
             loadPreviousInterval = function() {
@@ -679,27 +681,61 @@
                 if (dataPoints > 8) {
                     // render lots of data points as line chart, because bars would have < 1 px width each
                     $sparkline
-                        .peity('line', {
-                            fill    : $o.colorBackground,
-                            height  : 14,
-                            stroke  : $o.colorBorder,
-                            width   : 34,
-                        });
+                    .peity('line', {
+                        fill    : $o.colorBackground,
+                        height  : 14,
+                        stroke  : $o.colorBorder,
+                        width   : 34,
+                    });
                 } else {
                     $sparkline
-                        .peity('bar', {
-                            fill    : function() {
-                                return $o.colorBorder;
-                            },
-                            gap     : 1,
-                            height  : 14,
-                            width   : 34,
-                        });
+                    .peity('bar', {
+                        fill    : function() {
+                            return $o.colorBorder;
+                        },
+                        gap     : 1,
+                        height  : 14,
+                        width   : 34,
+                    });
                 }
             },
 
-            loadDashboard = function(refresh) {
+            renderPostDataSparkline = function($context) {
+                // render sparklines within post statistics pane
+                $('.lp_sparklineBar', $context)
+                .peity('bar', {
+                    delimiter   : ';',
+                    width       : 182,
+                    height      : 42,
+                    gap         : 1,
+                    fill        : function(value, index, array) {
+                                    var date        = new Date(),
+                                        daysCount   = array.length,
+                                        color       = '#999';
+                                    date.setDate(date.getDate() - (daysCount - index));
+                                    // highlight the last (current) day
+                                    if (index === (daysCount - 1)) {
+                                        color = '#555';
+                                    }
+                                    // highlight Saturdays and Sundays
+                                    if (date.getDay() === 0 || date.getDay() === 6) {
+                                        color = '#c1c1c1';
+                                    }
+                                    return color;
+                                },
+                });
 
+                $('.lp_sparklineBackgroundBar', $context)
+                .peity('bar', {
+                    delimiter   : ';',
+                    width       : 182,
+                    height      : 42,
+                    gap         : 1,
+                    fill        : function() { return '#ddd'; }
+                });
+            },
+
+            loadDashboard = function(refresh) {
                 refresh = refresh || false;
                 loadMostLeastConvertingItems(refresh);
                 loadMostLeastRevenueItems(refresh);
@@ -709,6 +745,44 @@
                 loadRevenueItems(refresh);
                 loadSellingItems(refresh);
                 loadKPIs(refresh);
+            },
+
+            toggleItemDetails = function($item) {
+                var postId              = $item.data('postId'),
+                    $resultContainer    = $item.parent().next('.lp_js_postDetails');
+
+                $resultContainer.toggleClass($o.hidden);
+
+                if (!$resultContainer.hasClass($o.loaded)) {
+                    loadPostData(postId)
+                    .done(function (response) {
+                        $resultContainer.html(response.data);
+                        $resultContainer.addClass($o.loaded);
+
+                        renderPostDataSparkline($resultContainer);
+                    });
+                }
+            },
+
+            loadPostData = function(postId) {
+                var requestData = {
+                        // WP Ajax action
+                        'action'    : 'laterpay_get_dashboard_post_data',
+                        // nonce for validation and XSS protection
+                        '_wpnonce'  : lpVars.nonces.dashboard,
+                        // the post_id
+                        'post_id'   : postId,
+                    },
+                    jqxhr;
+
+                jqxhr = $.ajax({
+                    'url'      : lpVars.ajaxUrl,
+                    'async'    : true,
+                    'method'   : 'POST',
+                    'data'     : requestData,
+                });
+
+                return jqxhr;
             },
 
             switchDashboardView = function($item) {
