@@ -667,9 +667,14 @@
                 }
 
                 return '<li>' +
-                    '<span class="lp_sparklineBar">' + sparklineData + '</span>' +
-                    '<strong class="' + valueClass + '">' + kpi + '</strong>' +
-                    '<i><a href="#" class="lp_js_toggleItemDetails">' + itemName + '</a></i>' +
+                        '<span class="lp_sparklineBar">' + sparklineData + '</span>' +
+                        '<strong class="' + valueClass + '">' + kpi + '</strong>' +
+                        '<i>' +
+                            '<a href="#" data-post-id="' + postId + '" class="lp_js_toggleItemDetails">' +
+                                itemName +
+                            '</a>' +
+                        '</i>' +
+                        '<div class="lp_js_itemDetails lp_post-statistics__container lp_is-hidden"></div>' +
                     '</li>';
             },
 
@@ -749,18 +754,21 @@
 
             toggleItemDetails = function($item) {
                 var postId              = $item.data('postId'),
-                    $resultContainer    = $item.parent().next('.lp_js_postDetails');
-
-                $resultContainer.toggleClass($o.hidden);
+                    $resultContainer    = $item.parent().next('.lp_js_itemDetails');
 
                 if (!$resultContainer.hasClass($o.loaded)) {
                     loadPostData(postId)
-                    .done(function (response) {
-                        $resultContainer.html(response.data);
-                        $resultContainer.addClass($o.loaded);
+                    .done(function(response) {
+                        $resultContainer
+                        .html(response.data)
+                        .addClass($o.loaded);
 
                         renderPostDataSparkline($resultContainer);
+
+                        $resultContainer.toggleClass($o.hidden);
                     });
+                } else {
+                    $resultContainer.toggleClass($o.hidden);
                 }
             },
 
