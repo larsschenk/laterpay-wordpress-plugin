@@ -4,3 +4,6 @@
 	fetchRecurseSubmodules = true
 	ignore = all
 	update = checkout
+[submodule "laterpay/library/laterpay"]
+	path = laterpay/library/laterpay
+	url = https://github.com/larsschenk/laterpay-client-php
