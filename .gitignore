@@ -5,3 +5,4 @@ laterpay/sftp-config.json
 nbproject/
 node_modules/
 .gulp
+npm-debug.log
